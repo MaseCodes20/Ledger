@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import React from "react";
-import SideBar from "../components/ledger/SideBar";
+import SideBar from "../components/SideBar";
 import LoadingScreen from "../components/LoadingScreen";
 
 function goals() {

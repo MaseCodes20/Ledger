@@ -1,7 +1,8 @@
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import React from "react";
-import SideBar from "../components/ledger/SideBar";
+import LoadingScreen from "../components/LoadingScreen";
+import SideBar from "../components/SideBar";
 
 function expense() {
   const { data: session } = useSession();

@@ -7,7 +7,6 @@ function SideBar() {
 
   const router = useRouter();
 
-  console.log(session);
   const { image, name } = session.user;
   return (
     <div className="w-[300px] h-screen bg-black text-white border-r-2 border-gray-500">

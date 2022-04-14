@@ -3,10 +3,27 @@ import Head from "next/head";
 import React from "react";
 import SideBar from "../components/SideBar";
 import LoadingScreen from "../components/LoadingScreen";
+import { useEffect } from "react";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 function goals() {
-  const { data: session } = useSession();
-  const { status } = useSession({ required: true });
+  const { data: session, status } = useSession({ required: true });
+
+  useEffect(() => {
+    if (session) {
+      setDoc(
+        doc(db, "users", session.user.uid),
+        {
+          email: session.user.email,
+          lastSeen: serverTimestamp(),
+          photoURL: session.user.image,
+          name: session.user.name,
+        },
+        { merge: true }
+      );
+    }
+  }, [session][db]);
   return (
     <div>
       <Head>

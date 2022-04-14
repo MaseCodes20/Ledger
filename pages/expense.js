@@ -1,12 +1,31 @@
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
-import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import Expense from "../components/expense/Expense";
 import LoadingScreen from "../components/LoadingScreen";
 import SideBar from "../components/SideBar";
+import { db } from "../firebase";
 
 function expense() {
-  const { data: session } = useSession();
-  const { status } = useSession({ required: true });
+  const { data: session, status } = useSession({ required: true });
+
+  useEffect(() => {
+    if (session) {
+      setDoc(
+        doc(db, "users", session.user.uid),
+        {
+          email: session.user.email,
+          lastSeen: serverTimestamp(),
+          photoURL: session.user.image,
+          name: session.user.name,
+        },
+        { merge: true }
+      );
+    }
+  }, [session][db]);
+
   return (
     <div>
       <Head>
@@ -21,9 +40,7 @@ function expense() {
           {session && (
             <div className="flex">
               <SideBar />
-              <div className="flex-1">
-                <h1 className="text-center">Expense</h1>
-              </div>
+              <Expense session={session} />
             </div>
           )}
         </>

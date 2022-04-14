@@ -51,7 +51,7 @@ function ExpenseForm({ session }) {
 
         <input
           type="submit"
-          className="cursor-pointer rounded-full bg-white p-1 mt-2"
+          className="cursor-pointer rounded-full bg-white text-black p-1 mt-2"
         />
       </form>
     </div>

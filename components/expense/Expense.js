@@ -14,13 +14,13 @@ function Expense({ session }) {
         where("email", "==", session?.user.email)
       ),
       (snapshot) => {
-        setBills(snapshot.docs);
+        setBills(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       }
     );
   }, [db]);
 
   return (
-    <div className="flex-1">
+    <div className="rightSideContainer">
       <h1 className="text-center">Expense</h1>
       <ExpenseForm session={session} />
 
@@ -28,7 +28,7 @@ function Expense({ session }) {
         <>
           <div className="grid grid-cols-4 gap-1 justify-items-center">
             {bills?.map((bill) => {
-              const { userID, company, fee: debt } = bill.data();
+              const { userID, company, fee: debt } = bill;
               return (
                 <div
                   key={`${userID}${company}`}

@@ -2,11 +2,11 @@ import React from "react";
 import SideBar from "../SideBar";
 import Data from "./Data";
 
-function Ledger() {
+function Ledger({ session }) {
   return (
-    <div className="flex h-screen">
+    <div className="screenContainer">
       <SideBar />
-      <Data />
+      <Data session={session} />
     </div>
   );
 }

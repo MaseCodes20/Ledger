@@ -9,4 +9,13 @@
   .sideBarButtons {
     @apply text-lg font-semibold h-10 hover:bg-gray-600;
   }
+  .pageContainer {
+    @apply relative min-h-screen bg-black text-white;
+  }
+  .screenContainer {
+    @apply flex h-screen;
+  }
+  .rightSideContainer {
+    @apply flex-1 relative overflow-y-auto;
+  }
 }

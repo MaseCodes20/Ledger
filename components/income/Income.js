@@ -14,29 +14,37 @@ function Income({ session }) {
         where("email", "==", session?.user.email)
       ),
       (snapshot) => {
-        setIncomes(snapshot.docs);
+        setIncomes(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       }
     );
   }, [db]);
 
-  const sumIncome = (income) => {
-    return income.reduce((a, b) => a + b, 0);
+  console.log(incomes);
+
+  // const getSalary = incomes.map((income) => income.data().income);
+
+  const updateIncome = async (e) => {
+    const documentRef = doc(db, "users", session.user.uid, "incomes");
+
+    // Set the "capital" field of the city 'DC'
+    await updateDoc(documentRef, {
+      capital: true,
+    });
   };
 
-  const getSalary = incomes.map((income) => income.data().income);
   return (
-    <div className="flex-1">
+    <div className="rightSideContainer">
       <h1 className="text-center">Income</h1>
       <IncomeForm session={session} />
 
-      {incomes !== [] && (
+      {incomes && (
         <>
           <div className="grid grid-cols-4 gap-1 justify-items-center">
             {incomes?.map((income) => {
-              const { userID, job, income: salary } = income.data();
+              const { job, income: salary, id } = income;
               return (
                 <div
-                  key={`${userID}${job}`}
+                  key={id}
                   className="bg-blue-400 my-2 w-[200px] h-[100px] rounded-md"
                 >
                   <div className="flex">

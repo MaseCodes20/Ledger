@@ -67,7 +67,7 @@ function Expense({ session }) {
 
                   <div className="flex">
                     <p className="mr-2">Debt:</p>
-                    <p>{debt}</p>
+                    <p>${debt}</p>
                   </div>
 
                   <UpdateDeleteButtons
@@ -99,10 +99,18 @@ function Expense({ session }) {
                           />
                         </div>
 
-                        <input
-                          type="submit"
-                          className="cursor-pointer rounded-full bg-white text-black p-1 mt-2"
-                        />
+                        <div className="flex justify-center mt-3">
+                          <input
+                            type="submit"
+                            className="cursor-pointer rounded-full bg-white text-black p-1 mx-1"
+                          />
+                          <button
+                            onClick={() => setSelected(null)}
+                            className="rounded-full bg-white text-black p-1 mx-1"
+                          >
+                            Cancel
+                          </button>
+                        </div>
                       </form>
                     </div>
                   )}

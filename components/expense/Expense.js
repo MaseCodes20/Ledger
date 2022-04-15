@@ -8,6 +8,7 @@ import {
 } from "firebase/firestore";
 import { useState, useEffect, useRef } from "react";
 import { db } from "../../firebase";
+import UpdateDeleteButtons from "../UpdateDeleteButtons";
 import ExpenseForm from "./ExpenseForm";
 
 function Expense({ session }) {
@@ -48,7 +49,7 @@ function Expense({ session }) {
       <h1 className="text-center">Expense</h1>
       <ExpenseForm session={session} />
 
-      {bills !== [] && (
+      {bills && (
         <>
           <div className="grid grid-cols-4 gap-1 justify-items-center">
             {bills?.map((bill) => {
@@ -58,7 +59,6 @@ function Expense({ session }) {
                   key={id}
                   className="bg-blue-400 p-2 my-2 w-[200px] h-fit rounded-md"
                 >
-                  <button onClick={() => setSelected(id)}>update</button>
                   <div className="flex">
                     <p className="mr-2">Company:</p>
                     <p>{company}</p>
@@ -68,6 +68,12 @@ function Expense({ session }) {
                     <p className="mr-2">Debt:</p>
                     <p>{debt}</p>
                   </div>
+
+                  <UpdateDeleteButtons
+                    id={id}
+                    setSelected={setSelected}
+                    session={session}
+                  />
 
                   {selected === id && (
                     <div className="text-center">

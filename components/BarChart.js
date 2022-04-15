@@ -55,10 +55,16 @@ function BarChart({ money, name, label }) {
       },
     },
   };
+
+  console.log(money);
   return (
-    <div className="w-[500px] mx-auto mt-10">
-      <Bar type="bar" data={data} options={options} />
-    </div>
+    <>
+      {money.length > 0 && (
+        <div className="w-[500px] mx-auto mt-10">
+          <Bar type="bar" data={data} options={options} />
+        </div>
+      )}
+    </>
   );
 }
 

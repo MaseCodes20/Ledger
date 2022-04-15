@@ -3,12 +3,15 @@ import IncomeForm from "./IncomeForm";
 import { db } from "../../firebase";
 import {
   collection,
+  deleteDoc,
   doc,
   onSnapshot,
   query,
   updateDoc,
   where,
 } from "firebase/firestore";
+import { async } from "@firebase/util";
+import UpdateDeleteButtons from "../UpdateDeleteButtons";
 
 function Income({ session }) {
   const [incomes, setIncomes] = useState([]);
@@ -58,7 +61,6 @@ function Income({ session }) {
                   key={id}
                   className="bg-blue-400 p-2 my-2 w-[200px] h-fit rounded-md"
                 >
-                  <button onClick={() => setSelected(id)}>update</button>
                   <div className="flex">
                     <p className="mr-2">Job:</p>
                     <p>{job}</p>
@@ -68,6 +70,12 @@ function Income({ session }) {
                     <p className="mr-2">Salary:</p>
                     <p>{salary}</p>
                   </div>
+
+                  <UpdateDeleteButtons
+                    id={id}
+                    setSelected={setSelected}
+                    session={session}
+                  />
 
                   {selected === id && (
                     <div className="text-center">

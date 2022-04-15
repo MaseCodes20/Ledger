@@ -1,0 +1,24 @@
+import { deleteDoc, doc } from "firebase/firestore";
+import React from "react";
+import { db } from "../firebase";
+
+function UpdateDeleteButtons({ id, setSelected, session }) {
+  const deleteDocument = async (id) => {
+    await deleteDoc(doc(db, "users", session.user.uid, "incomes", id));
+  };
+  return (
+    <div className="flex justify-between">
+      <button onClick={() => setSelected(id)} className="updateDeleteButtons">
+        update
+      </button>
+      <button
+        onClick={() => deleteDocument(id)}
+        className="updateDeleteButtons"
+      >
+        delete
+      </button>
+    </div>
+  );
+}
+
+export default UpdateDeleteButtons;

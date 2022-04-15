@@ -36,7 +36,7 @@ function IncomeForm({ session }) {
             type="text"
             ref={jobInputRef}
             placeholder="name...."
-            className="w-full"
+            className="w-full text-black"
           />
         </div>
 
@@ -46,7 +46,7 @@ function IncomeForm({ session }) {
             type="number"
             ref={incomeRef}
             placeholder="amount...."
-            className=""
+            className="text-black"
           />
         </div>
 

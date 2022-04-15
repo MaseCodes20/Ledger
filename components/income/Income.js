@@ -1,11 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import IncomeForm from "./IncomeForm";
 import { db } from "../../firebase";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  onSnapshot,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 
 function Income({ session }) {
   const [incomes, setIncomes] = useState([]);
-  const [total, setTotal] = useState(null);
+  const [selected, setSelected] = useState(null);
+
+  const jobInputRef = useRef();
+  const incomeRef = useRef();
 
   useEffect(() => {
     onSnapshot(
@@ -19,17 +29,18 @@ function Income({ session }) {
     );
   }, [db]);
 
-  console.log(incomes);
+  const updateIncome = async (e, id) => {
+    e.preventDefault();
+    if (jobInputRef.current.value === "" || incomeRef.current.value === "")
+      return;
+    const documentRef = doc(db, "users", session.user.uid, "incomes", id);
 
-  // const getSalary = incomes.map((income) => income.data().income);
-
-  const updateIncome = async (e) => {
-    const documentRef = doc(db, "users", session.user.uid, "incomes");
-
-    // Set the "capital" field of the city 'DC'
     await updateDoc(documentRef, {
-      capital: true,
+      job: jobInputRef.current.value,
+      income: parseInt(incomeRef.current.value),
     });
+
+    setSelected(null);
   };
 
   return (
@@ -45,8 +56,9 @@ function Income({ session }) {
               return (
                 <div
                   key={id}
-                  className="bg-blue-400 my-2 w-[200px] h-[100px] rounded-md"
+                  className="bg-blue-400 p-2 my-2 w-[200px] h-fit rounded-md"
                 >
+                  <button onClick={() => setSelected(id)}>update</button>
                   <div className="flex">
                     <p className="mr-2">Job:</p>
                     <p>{job}</p>
@@ -56,12 +68,41 @@ function Income({ session }) {
                     <p className="mr-2">Salary:</p>
                     <p>{salary}</p>
                   </div>
+
+                  {selected === id && (
+                    <div className="text-center">
+                      <form onSubmit={(e) => updateIncome(e, id)}>
+                        <div className="flex my-2">
+                          <p className="mr-2">Job:</p>
+                          <input
+                            type="text"
+                            ref={jobInputRef}
+                            placeholder="name...."
+                            className="w-full text-black"
+                          />
+                        </div>
+
+                        <div className="flex my-2">
+                          <p className="mr-2">Net income:</p>
+                          <input
+                            type="number"
+                            ref={incomeRef}
+                            placeholder="amount...."
+                            className="w-full text-black"
+                          />
+                        </div>
+
+                        <input
+                          type="submit"
+                          className="cursor-pointer rounded-full bg-white text-black p-1 mt-2"
+                        />
+                      </form>
+                    </div>
+                  )}
                 </div>
               );
             })}
           </div>
-
-          {/* <p>{sumIncome(getSalary)}</p> */}
         </>
       )}
     </div>

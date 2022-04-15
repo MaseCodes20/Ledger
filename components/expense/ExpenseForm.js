@@ -35,7 +35,7 @@ function ExpenseForm({ session }) {
             type="text"
             ref={companyInputRef}
             placeholder="name...."
-            className="w-full"
+            className="w-full text-black"
           />
         </div>
 
@@ -45,7 +45,7 @@ function ExpenseForm({ session }) {
             type="number"
             ref={feeRef}
             placeholder="amount...."
-            className="w-full"
+            className="w-full text-black"
           />
         </div>
 

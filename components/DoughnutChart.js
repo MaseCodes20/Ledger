@@ -2,7 +2,7 @@ import React from "react";
 import "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 
-function DoughnutChart({ billTotal, Remaining }) {
+function DoughnutChart({ billTotal, Remaining, incomeTotal }) {
   const data = {
     labels: ["Expense", "Remaining"],
     datasets: [
@@ -30,8 +30,18 @@ function DoughnutChart({ billTotal, Remaining }) {
     },
   };
   return (
-    <div className="w-[500px] mx-auto mt-10">
+    <div className="lg:w-[500px] h-fit mx-auto mt-10 relative">
       <Chart type="doughnut" data={data} options={options} />
+      <div className="totalIncomeContainer">
+        <div className="totalIncomeCircle">
+          <div className="centeredOnScreen">
+            <div className="hidden lg:flex">
+              <h1 className="mx-auto hidden lg:flex">Income</h1>
+            </div>
+            <p className="text-sm lg:text-2xl mt-5 lg:mt-0">${incomeTotal}</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

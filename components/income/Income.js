@@ -59,8 +59,9 @@ function Income({ session }) {
               return (
                 <div
                   key={id}
-                  className="bg-blue-400 p-2 my-2 w-[200px] h-fit rounded-md"
+                  className="bg-blue-400 p-2 my-2 w-[200px] h-fit rounded-md text-center"
                 >
+                  <h1 className="font-bold uppercase text-pink-500">Income</h1>
                   <div className="flex">
                     <p className="mr-2">Job:</p>
                     <p>{job}</p>

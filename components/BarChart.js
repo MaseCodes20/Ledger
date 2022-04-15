@@ -48,19 +48,17 @@ function BarChart({ money, name, label }) {
       y: {
         ticks: {
           // Include a dollar sign in the ticks
-          callback: function (value, index, ticks) {
-            return "$" + value;
+          callback: function (value) {
+            return `$${value}`;
           },
         },
       },
     },
   };
-
-  console.log(money);
   return (
     <>
       {money.length > 0 && (
-        <div className="w-[500px] mx-auto mt-10">
+        <div className="lg:w-[500px] mx-auto mt-10">
           <Bar type="bar" data={data} options={options} />
         </div>
       )}

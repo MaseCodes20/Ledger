@@ -52,8 +52,12 @@ function Data({ session }) {
 
   return (
     <div className="rightSideContainer">
-      <div className="flex items-center">
-        <DoughnutChart billTotal={billTotal} Remaining={Remaining} />
+      <div className="lg:flex items-center w-full">
+        <DoughnutChart
+          billTotal={billTotal}
+          Remaining={Remaining}
+          incomeTotal={incomeTotal}
+        />
         <div className="">
           <BarChart money={getBills} name={getCompany} label={billsLabel} />
           <BarChart money={getIncome} name={getJobs} label={incomeLabel} />

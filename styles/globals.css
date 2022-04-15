@@ -21,4 +21,10 @@
   .updateDeleteButtons {
     @apply bg-white text-black p-1 rounded-md mt-2;
   }
+  .totalIncomeContainer {
+    @apply lg:text-black text-center font-bold centeredOnScreen mt-4;
+  }
+  .totalIncomeCircle {
+    @apply relative lg:h-[100px] lg:w-[100px] rounded-full bg-yellow-500;
+  }
 }

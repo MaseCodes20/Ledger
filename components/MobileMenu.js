@@ -7,6 +7,7 @@ import {
   PlayIcon,
   StarIcon,
 } from "@heroicons/react/solid";
+import { signOut } from "next-auth/react";
 
 function MobileMenu({ session }) {
   const router = useRouter();
@@ -79,6 +80,19 @@ function MobileMenu({ session }) {
                 >
                   <FireIcon className="menuIcon" />
                   GOALS
+                </a>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  className={`mobileMenuLink ${
+                    active && "mobileMenuLinkActive"
+                  }`}
+                  onClick={signOut}
+                >
+                  <FireIcon className="menuIcon" />
+                  SIGNOUT
                 </a>
               )}
             </Menu.Item>

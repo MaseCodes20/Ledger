@@ -1,4 +1,4 @@
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useState, useRef } from "react";
 import { db } from "../firebase";
 import UpdateDeleteButtons from "./UpdateDeleteButtons";
@@ -20,13 +20,19 @@ function ExpenseAndIncomeCard({
 
   const updateDocument = async (e, id) => {
     e.preventDefault();
-    if (nameInputRef.current.value === "" || moneyInputRef.current.value === "")
+    if (nameInputRef.current.value === "" && moneyInputRef.current.value === "")
       return;
+
     const documentRef = doc(db, "users", session.user.uid, pageTitle, id);
 
     await updateDoc(documentRef, {
-      [nameInputTitle]: nameInputRef.current.value,
-      [moneyInputTitle]: parseInt(moneyInputRef.current.value),
+      [nameInputTitle]:
+        nameInputRef.current.value !== "" ? nameInputRef.current.value : name,
+      [moneyInputTitle]:
+        moneyInputRef.current.value !== ""
+          ? parseInt(moneyInputRef.current.value)
+          : money,
+      timestamp: serverTimestamp(),
     });
 
     setSelected(null);

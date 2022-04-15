@@ -40,7 +40,7 @@ function Data({ session }) {
   const getIncome = incomes.map((income) => income.data().income);
   const getJobs = incomes.map((name) => name.data().job);
   const getBills = bills.map((bill) => bill.data().fee);
-  const getCompany = bills.map((name) => name.data().company);
+  const getCompany = bills.map((name) => name.data().expense);
 
   const incomeTotal = sum(getIncome);
   const billTotal = sum(getBills);

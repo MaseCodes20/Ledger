@@ -1,22 +1,16 @@
-import {
-  collection,
-  doc,
-  onSnapshot,
-  query,
-  updateDoc,
-  where,
-} from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { useState, useEffect, useRef } from "react";
 import { db } from "../../firebase";
-import UpdateDeleteButtons from "../UpdateDeleteButtons";
-import ExpenseForm from "./ExpenseForm";
+import ExpenseAndIncomeCard from "../ExpenseAndIncomeCard";
+import Form from "../Form";
 
 function Expense({ session }) {
   const [bills, setBills] = useState([]);
-  const [selected, setSelected] = useState(null);
 
-  const companyInputRef = useRef();
-  const feeRef = useRef();
+  const cardTitle = "Bill";
+  const pageTitle = "expense";
+  const nameInputTitle = "expense";
+  const moneyInputTitle = "fee";
 
   useEffect(() => {
     onSnapshot(
@@ -30,91 +24,33 @@ function Expense({ session }) {
     );
   }, [db]);
 
-  const updateExpense = async (e, id) => {
-    e.preventDefault();
-    if (companyInputRef.current.value === "" || feeRef.current.value === "")
-      return;
-    const documentRef = doc(db, "users", session.user.uid, "expense", id);
-
-    await updateDoc(documentRef, {
-      company: companyInputRef.current.value,
-      fee: parseInt(feeRef.current.value),
-    });
-
-    setSelected(null);
-  };
-
   return (
     <div className="rightSideContainer">
       <h1 className="text-center">Expense</h1>
-      <ExpenseForm session={session} />
+      <Form
+        session={session}
+        pageTitle={pageTitle}
+        nameInputTitle={nameInputTitle}
+        moneyInputTitle={moneyInputTitle}
+      />
 
       {bills && (
         <>
           <div className="grid grid-cols-4 gap-1 justify-items-center">
             {bills?.map((bill) => {
-              const { company, fee: debt, id } = bill;
+              const { expense, fee: debt, id } = bill;
               return (
-                <div
+                <ExpenseAndIncomeCard
                   key={id}
-                  className="bg-blue-400 p-2 my-2 w-[200px] h-fit rounded-md text-center"
-                >
-                  <h1 className="font-bold uppercase text-pink-500">Bill</h1>
-                  <div className="flex">
-                    <p className="mr-2">Company:</p>
-                    <p>{company}</p>
-                  </div>
-
-                  <div className="flex">
-                    <p className="mr-2">Debt:</p>
-                    <p>${debt}</p>
-                  </div>
-
-                  <UpdateDeleteButtons
-                    id={id}
-                    setSelected={setSelected}
-                    session={session}
-                  />
-
-                  {selected === id && (
-                    <div className="text-center">
-                      <form onSubmit={(e) => updateExpense(e, id)}>
-                        <div className="flex my-2">
-                          <p className="mr-2">company:</p>
-                          <input
-                            type="text"
-                            ref={companyInputRef}
-                            placeholder="name...."
-                            className="w-full text-black"
-                          />
-                        </div>
-
-                        <div className="flex my-2">
-                          <p className="mr-2">fee:</p>
-                          <input
-                            type="number"
-                            ref={feeRef}
-                            placeholder="amount...."
-                            className="w-full text-black"
-                          />
-                        </div>
-
-                        <div className="flex justify-center mt-3">
-                          <input
-                            type="submit"
-                            className="cursor-pointer rounded-full bg-white text-black p-1 mx-1"
-                          />
-                          <button
-                            onClick={() => setSelected(null)}
-                            className="rounded-full bg-white text-black p-1 mx-1"
-                          >
-                            Cancel
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  )}
-                </div>
+                  id={id}
+                  session={session}
+                  pageTitle={pageTitle}
+                  money={debt}
+                  name={expense}
+                  nameInputTitle={nameInputTitle}
+                  moneyInputTitle={moneyInputTitle}
+                  cardTitle={cardTitle}
+                />
               );
             })}
           </div>

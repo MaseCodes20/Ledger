@@ -1,24 +1,16 @@
-import { useEffect, useState, useRef } from "react";
-import IncomeForm from "./IncomeForm";
+import { useEffect, useState } from "react";
 import { db } from "../../firebase";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  onSnapshot,
-  query,
-  updateDoc,
-  where,
-} from "firebase/firestore";
-import { async } from "@firebase/util";
-import UpdateDeleteButtons from "../UpdateDeleteButtons";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
+import ExpenseAndIncomeCard from "../ExpenseAndIncomeCard";
+import Form from "../Form";
 
 function Income({ session }) {
   const [incomes, setIncomes] = useState([]);
-  const [selected, setSelected] = useState(null);
 
-  const jobInputRef = useRef();
-  const incomeRef = useRef();
+  const cardTitle = "Income";
+  const incomePageTitle = "incomes";
+  const nameInputTitle = "job";
+  const moneyInputTitle = "income";
 
   useEffect(() => {
     onSnapshot(
@@ -32,24 +24,15 @@ function Income({ session }) {
     );
   }, [db]);
 
-  const updateIncome = async (e, id) => {
-    e.preventDefault();
-    if (jobInputRef.current.value === "" || incomeRef.current.value === "")
-      return;
-    const documentRef = doc(db, "users", session.user.uid, "incomes", id);
-
-    await updateDoc(documentRef, {
-      job: jobInputRef.current.value,
-      income: parseInt(incomeRef.current.value),
-    });
-
-    setSelected(null);
-  };
-
   return (
     <div className="rightSideContainer">
       <h1 className="text-center">Income</h1>
-      <IncomeForm session={session} />
+      <Form
+        session={session}
+        pageTitle={incomePageTitle}
+        nameInputTitle={nameInputTitle}
+        moneyInputTitle={moneyInputTitle}
+      />
 
       {incomes && (
         <>
@@ -57,66 +40,17 @@ function Income({ session }) {
             {incomes?.map((income) => {
               const { job, income: salary, id } = income;
               return (
-                <div
+                <ExpenseAndIncomeCard
                   key={id}
-                  className="bg-blue-400 p-2 my-2 w-[200px] h-fit rounded-md text-center"
-                >
-                  <h1 className="font-bold uppercase text-pink-500">Income</h1>
-                  <div className="flex">
-                    <p className="mr-2">Job:</p>
-                    <p>{job}</p>
-                  </div>
-
-                  <div className="flex">
-                    <p className="mr-2">Salary:</p>
-                    <p>${salary}</p>
-                  </div>
-
-                  <UpdateDeleteButtons
-                    id={id}
-                    setSelected={setSelected}
-                    session={session}
-                  />
-
-                  {selected === id && (
-                    <div className="text-center">
-                      <form onSubmit={(e) => updateIncome(e, id)}>
-                        <div className="flex my-2">
-                          <p className="mr-2">Job:</p>
-                          <input
-                            type="text"
-                            ref={jobInputRef}
-                            placeholder="name...."
-                            className="w-full text-black"
-                          />
-                        </div>
-
-                        <div className="flex my-2">
-                          <p className="mr-2">Net income:</p>
-                          <input
-                            type="number"
-                            ref={incomeRef}
-                            placeholder="amount...."
-                            className="w-full text-black"
-                          />
-                        </div>
-
-                        <div className="flex justify-center mt-3">
-                          <input
-                            type="submit"
-                            className="cursor-pointer rounded-full bg-white text-black p-1 mx-1"
-                          />
-                          <button
-                            onClick={() => setSelected(null)}
-                            className="rounded-full bg-white text-black p-1 mx-1"
-                          >
-                            Cancel
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  )}
-                </div>
+                  id={id}
+                  session={session}
+                  pageTitle={incomePageTitle}
+                  money={salary}
+                  name={job}
+                  nameInputTitle={nameInputTitle}
+                  moneyInputTitle={moneyInputTitle}
+                  cardTitle={cardTitle}
+                />
               );
             })}
           </div>

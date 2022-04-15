@@ -2,9 +2,9 @@ import { deleteDoc, doc } from "firebase/firestore";
 import React from "react";
 import { db } from "../firebase";
 
-function UpdateDeleteButtons({ id, setSelected, session }) {
+function UpdateDeleteButtons({ id, setSelected, session, pageTitle }) {
   const deleteDocument = async (id) => {
-    await deleteDoc(doc(db, "users", session.user.uid, "incomes", id));
+    await deleteDoc(doc(db, "users", session.user.uid, pageTitle, id));
   };
   return (
     <div className="flex justify-between">

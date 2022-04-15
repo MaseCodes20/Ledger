@@ -5,6 +5,7 @@ import React from "react";
 import { useEffect } from "react";
 import Income from "../components/income/Income";
 import LoadingScreen from "../components/LoadingScreen";
+import MobileMenu from "../components/MobileMenu";
 import SideBar from "../components/SideBar";
 import { db } from "../firebase";
 
@@ -38,7 +39,8 @@ function income() {
       ) : (
         <>
           {session && (
-            <div className="flex">
+            <div className="screenContainer">
+              <MobileMenu session={session} />
               <SideBar />
               <Income session={session} />
             </div>

@@ -36,7 +36,7 @@ function Expense({ session }) {
 
       {bills && (
         <>
-          <div className="grid grid-cols-4 gap-1 justify-items-center">
+          <div className="grid md:grid-cols-3 xl:grid-cols-4 gap-1 justify-items-center">
             {bills?.map((bill) => {
               const { expense, fee: debt, id } = bill;
               return (

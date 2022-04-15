@@ -13,10 +13,10 @@
     @apply relative min-h-screen bg-black text-white;
   }
   .screenContainer {
-    @apply flex h-screen;
+    @apply lg:flex h-screen w-full;
   }
   .rightSideContainer {
-    @apply flex-1 relative overflow-y-auto;
+    @apply flex-1 relative overflow-y-auto bg-black;
   }
   .updateDeleteButtons {
     @apply bg-white text-black p-1 rounded-md mt-2;
@@ -26,5 +26,20 @@
   }
   .totalIncomeCircle {
     @apply relative lg:h-[100px] lg:w-[100px] rounded-full bg-yellow-500;
+  }
+  .mobileMenuLink {
+    @apply flex items-center px-4 py-2 cursor-pointer text-black;
+  }
+  .mobileMenuLinkActive {
+    @apply bg-pink-500 text-white;
+  }
+  .menuIcon {
+    @apply h-6 mr-3;
+  }
+  .menuButton {
+    @apply lg:hidden flex justify-center items-center content-center;
+  }
+  .menuItemsContainer {
+    @apply origin-top-right absolute right-0 mr-4 mt-4 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none z-10;
   }
 }

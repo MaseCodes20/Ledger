@@ -6,6 +6,7 @@ import LoadingScreen from "../components/LoadingScreen";
 import { useEffect } from "react";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import MobileMenu from "../components/MobileMenu";
 
 function goals() {
   const { data: session, status } = useSession({ required: true });
@@ -37,6 +38,7 @@ function goals() {
         <>
           {session && (
             <div className="screenContainer">
+              <MobileMenu session={session} />
               <SideBar />
               <div className="rightSideContainer">
                 <h1 className="text-center">Goals</h1>

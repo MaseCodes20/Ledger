@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useEffect } from "react";
 import Expense from "../components/expense/Expense";
 import LoadingScreen from "../components/LoadingScreen";
+import MobileMenu from "../components/MobileMenu";
 import SideBar from "../components/SideBar";
 import { db } from "../firebase";
 
@@ -38,6 +39,7 @@ function expense() {
         <>
           {session && (
             <div className="screenContainer">
+              <MobileMenu session={session} />
               <SideBar />
               <Expense session={session} />
             </div>

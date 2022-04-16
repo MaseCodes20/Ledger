@@ -35,7 +35,7 @@ function GoalsForm({
     savedMoneyInputRef.current.value = "";
   };
   return (
-    <div className="bg-blue-400 w-fit mx-auto text-center rounded-lg p-2">
+    <div className="bg-[#231B40] border-2 border-[#8985F2] w-fit mx-auto text-center rounded-lg p-2">
       <h1 className="text-center font-semibold">
         Add your monthly {pageTitle}
       </h1>

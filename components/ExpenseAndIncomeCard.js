@@ -39,16 +39,16 @@ function ExpenseAndIncomeCard({
   };
 
   return (
-    <div className="bg-blue-400 p-2 my-2 w-[200px] h-fit rounded-md text-center">
-      <h1 className="font-bold uppercase text-pink-500">{cardTitle}</h1>
+    <div className="cardsContainer">
+      <h1 className="cardsTitle">{cardTitle}</h1>
       <div className="flex">
-        <p className="mr-2">{nameInputTitle}:</p>
-        <p>{name}</p>
+        <p className="cardsInputTitle">{nameInputTitle}:</p>
+        <p className="cardsValue">{name}</p>
       </div>
 
       <div className="flex">
-        <p className="mr-2">{moneyInputTitle}:</p>
-        <p>${money}</p>
+        <p className="cardsInputTitle">{moneyInputTitle}:</p>
+        <p className="cardsValue">${money}</p>
       </div>
 
       <UpdateDeleteButtons
@@ -62,7 +62,7 @@ function ExpenseAndIncomeCard({
         <div className="text-center">
           <form onSubmit={(e) => updateDocument(e, id)}>
             <div className="flex my-2">
-              <p className="mr-2">{nameInputTitle}:</p>
+              <p className="cardsInputTitle">{nameInputTitle}:</p>
               <input
                 type="text"
                 ref={nameInputRef}
@@ -72,7 +72,7 @@ function ExpenseAndIncomeCard({
             </div>
 
             <div className="flex my-2">
-              <p className="mr-2">{moneyInputTitle}:</p>
+              <p className="cardsInputTitle">{moneyInputTitle}:</p>
               <input
                 type="number"
                 ref={moneyInputRef}

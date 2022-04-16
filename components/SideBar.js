@@ -10,8 +10,8 @@ function SideBar() {
   const { image, name } = session.user;
   return (
     <div className="hidden lg:flex">
-      <div className="w-[300px] h-screen bg-black text-white border-r-2 border-gray-500">
-        <div className="flex items-center p-4 border-b-2 border-gray-500">
+      <div className="w-[300px] h-screen bg-[#151426] text-white border-r-2 border-[#8985F2]">
+        <div className="flex items-center p-4 border-b-2 border-[#8985F2]">
           <img
             src={image}
             alt="profile pic"
@@ -25,7 +25,7 @@ function SideBar() {
         </div>
 
         {/* Pages */}
-        <div className="flex flex-col">
+        <nav className="flex flex-col mt-10">
           <button onClick={() => router.push("/")} className="sideBarButtons">
             Home
           </button>
@@ -47,7 +47,7 @@ function SideBar() {
           >
             Goals
           </button>
-        </div>
+        </nav>
       </div>
     </div>
   );

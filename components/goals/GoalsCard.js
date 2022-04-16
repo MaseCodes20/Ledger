@@ -51,21 +51,21 @@ function GoalsCard({
   };
 
   return (
-    <div className="bg-blue-400 p-2 my-2 w-[200px] h-fit rounded-md text-center">
-      <h1 className="font-bold uppercase text-pink-500">{cardTitle}</h1>
+    <div className="cardsContainer">
+      <h1 className="cardsTitle">{cardTitle}</h1>
       <div className="flex">
-        <p className="mr-2">{nameInputTitle}:</p>
-        <p>{name}</p>
+        <p className="cardsInputTitle">{nameInputTitle}:</p>
+        <p className="cardsValue">{name}</p>
       </div>
 
       <div className="flex">
-        <p className="mr-2">{moneyInputTitle}:</p>
-        <p>${money}</p>
+        <p className="cardsInputTitle">{moneyInputTitle}:</p>
+        <p className="cardsValue">${money}</p>
       </div>
 
       <div className="flex">
-        <p className="mr-2">{savedMoneyInputTitle}:</p>
-        <p>${saved}</p>
+        <p className="cardsInputTitle">{savedMoneyInputTitle}:</p>
+        <p className="cardsValue">${saved}</p>
       </div>
       <UpdateDeleteButtons
         id={id}
@@ -78,7 +78,7 @@ function GoalsCard({
         <div className="text-center">
           <form onSubmit={(e) => updateDocument(e, id)}>
             <div className="flex my-2">
-              <p className="mr-2">{nameInputTitle}:</p>
+              <p className="cardsInputTitle">{nameInputTitle}:</p>
               <input
                 type="text"
                 ref={nameInputRef}
@@ -88,7 +88,7 @@ function GoalsCard({
             </div>
 
             <div className="flex my-2">
-              <p className="mr-2">{moneyInputTitle}:</p>
+              <p className="cardsInputTitle">{moneyInputTitle}:</p>
               <input
                 type="number"
                 ref={moneyInputRef}
@@ -98,7 +98,7 @@ function GoalsCard({
             </div>
 
             <div className="flex my-2">
-              <p className="mr-2">{savedMoneyInputTitle}:</p>
+              <p className="cardsInputTitle">{savedMoneyInputTitle}:</p>
               <input
                 type="number"
                 ref={savedMoneyInputRef}

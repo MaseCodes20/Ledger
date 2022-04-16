@@ -16,7 +16,6 @@ function GoalsCharts({ goals }) {
                   amount={amount}
                   savedMoney={savedMoney}
                 />
-                <h1 className="">{name}</h1>
               </div>
             </div>
           );

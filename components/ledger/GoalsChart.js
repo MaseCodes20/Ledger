@@ -32,8 +32,10 @@ function GoalsChart({ name, amount, savedMoney }) {
     },
   };
   return (
-    <div className="lg:w-[300px]">
+    <div className="lg:w-[300px] border-2 rounded-lg p-2 border-[#8985F2]">
       <Chart type="pie" data={data} options={options} />
+
+      <h1 className="">{name}</h1>
     </div>
   );
 }

@@ -8,6 +8,7 @@ import GoalsCharts from "./GoalsCharts";
 function Data({ session }) {
   const [incomes, setIncomes] = useState([]);
   const [bills, setBills] = useState([]);
+  const [goals, setGoals] = useState([]);
 
   useEffect(() => {
     onSnapshot(
@@ -29,6 +30,18 @@ function Data({ session }) {
       ),
       (snapshot) => {
         setBills(snapshot.docs);
+      }
+    );
+  }, [db]);
+
+  useEffect(() => {
+    onSnapshot(
+      query(
+        collection(db, "users", session.user.uid, "goals"),
+        where("email", "==", session?.user.email)
+      ),
+      (snapshot) => {
+        setGoals(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       }
     );
   }, [db]);
@@ -58,14 +71,14 @@ function Data({ session }) {
           Remaining={Remaining}
           incomeTotal={incomeTotal}
         />
-        <div className="">
+        <div className="mt-10 mx-auto">
           <BarChart money={getBills} name={getCompany} label={billsLabel} />
           <BarChart money={getIncome} name={getJobs} label={incomeLabel} />
         </div>
       </div>
 
       {/* Goals pie chart */}
-      <GoalsCharts />
+      <GoalsCharts goals={goals} />
     </div>
   );
 }

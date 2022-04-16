@@ -7,7 +7,7 @@ function DoughnutChart({ billTotal, Remaining, incomeTotal }) {
     labels: ["Expense", "Remaining"],
     datasets: [
       {
-        label: "My First Dataset",
+        label: "Expense Chart",
         data: [billTotal, Remaining],
         backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
         borderColor: "black",

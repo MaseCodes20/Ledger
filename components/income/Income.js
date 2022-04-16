@@ -26,7 +26,6 @@ function Income({ session }) {
 
   return (
     <div className="rightSideContainer">
-      <h1 className="text-center">Income</h1>
       <Form
         session={session}
         pageTitle={incomePageTitle}

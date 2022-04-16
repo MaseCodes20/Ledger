@@ -54,4 +54,19 @@
   .cardsValue {
     @apply text-[#F26BDC];
   }
+  .formContainer {
+    @apply bg-[#231B40] border-2 border-[#8985F2] mt-10 w-fit mx-auto text-center rounded-lg p-2;
+  }
+  .formTitle {
+    @apply text-center font-semibold;
+  }
+  .formInputContainer {
+    @apply flex my-2;
+  }
+  .formInputTitle {
+    @apply mr-2 text-[#F26BDC] uppercase;
+  }
+  .fromInput {
+    @apply w-full text-black;
+  }
 }

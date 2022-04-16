@@ -59,7 +59,8 @@ function ExpenseAndIncomeCard({
       />
 
       {selected === id && (
-        <div className="text-center">
+        <div className="formContainer">
+          <h1 className="formTitle text-[#BF9B6F]">Update</h1>
           <form onSubmit={(e) => updateDocument(e, id)}>
             <div className="flex my-2">
               <p className="cardsInputTitle">{nameInputTitle}:</p>

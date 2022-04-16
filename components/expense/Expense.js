@@ -26,7 +26,6 @@ function Expense({ session }) {
 
   return (
     <div className="rightSideContainer">
-      <h1 className="text-center">Expense</h1>
       <Form
         session={session}
         pageTitle={pageTitle}

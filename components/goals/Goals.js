@@ -11,7 +11,7 @@ function Goals({ session }) {
   const pageTitle = "goals";
   const nameInputTitle = "goal";
   const moneyInputTitle = "amount";
-  const savedMoneyInputTitle = "saved money";
+  const savedMoneyInputTitle = "money saved";
   const savedMoneyTitle = "savedMoney";
 
   useEffect(() => {
@@ -28,13 +28,13 @@ function Goals({ session }) {
 
   return (
     <div className="rightSideContainer">
-      <h1 className="text-center">Goals</h1>
       <GoalsForm
         session={session}
         pageTitle={pageTitle}
         nameInputTitle={nameInputTitle}
         moneyInputTitle={moneyInputTitle}
         savedMoneyInputTitle={savedMoneyTitle}
+        savedMoneyTitle={savedMoneyInputTitle}
       />
 
       {goals && (

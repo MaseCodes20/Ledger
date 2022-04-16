@@ -26,28 +26,26 @@ function Form({ session, nameInputTitle, moneyInputTitle, pageTitle }) {
     moneyInputRef.current.value = "";
   };
   return (
-    <div className="bg-[#231B40] border-2 border-[#8985F2] w-fit mx-auto text-center rounded-lg p-2">
-      <h1 className="text-center font-semibold">
-        Add your monthly {pageTitle}
-      </h1>
+    <div className="formContainer">
+      <h1 className="formTitle">Add your monthly {pageTitle}</h1>
       <form onSubmit={submitToDB}>
-        <div className="flex my-2">
-          <p className="mr-2">{nameInputTitle}:</p>
+        <div className="formInputContainer">
+          <p className="formInputTitle">{nameInputTitle}:</p>
           <input
             type="text"
             ref={nameInputRef}
             placeholder="name...."
-            className="w-full text-black"
+            className="fromInput"
           />
         </div>
 
-        <div className="flex my-2">
-          <p className="mr-2">{moneyInputTitle}:</p>
+        <div className="formInputContainer">
+          <p className="formInputTitle">{moneyInputTitle}:</p>
           <input
             type="number"
             ref={moneyInputRef}
             placeholder="amount...."
-            className="w-full text-black"
+            className="fromInput"
           />
         </div>
 

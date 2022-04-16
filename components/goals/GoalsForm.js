@@ -1,10 +1,17 @@
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useRef } from "react";
-import { db } from "../firebase";
+import { db } from "../../firebase";
 
-function Form({ session, nameInputTitle, moneyInputTitle, pageTitle }) {
+function GoalsForm({
+  session,
+  nameInputTitle,
+  moneyInputTitle,
+  pageTitle,
+  savedMoneyInputTitle,
+}) {
   const nameInputRef = useRef();
   const moneyInputRef = useRef();
+  const savedMoneyInputRef = useRef();
 
   const submitToDB = async (e) => {
     e.preventDefault();
@@ -16,6 +23,7 @@ function Form({ session, nameInputTitle, moneyInputTitle, pageTitle }) {
       {
         [nameInputTitle]: nameInputRef.current.value,
         [moneyInputTitle]: parseInt(moneyInputRef.current.value),
+        [savedMoneyInputTitle]: parseInt(savedMoneyInputRef.current.value),
         userID: session.user.uid,
         email: session.user.email,
         timestamp: serverTimestamp(),
@@ -24,6 +32,7 @@ function Form({ session, nameInputTitle, moneyInputTitle, pageTitle }) {
 
     nameInputRef.current.value = "";
     moneyInputRef.current.value = "";
+    savedMoneyInputRef.current.value = "";
   };
   return (
     <div className="bg-blue-400 w-fit mx-auto text-center rounded-lg p-2">
@@ -51,6 +60,16 @@ function Form({ session, nameInputTitle, moneyInputTitle, pageTitle }) {
           />
         </div>
 
+        <div className="flex my-2">
+          <p className="mr-2">{savedMoneyInputTitle}:</p>
+          <input
+            type="number"
+            ref={savedMoneyInputRef}
+            placeholder="amount...."
+            className="w-full text-black"
+          />
+        </div>
+
         <input
           type="submit"
           className="cursor-pointer rounded-full bg-white text-black p-1 mt-2"
@@ -60,4 +79,4 @@ function Form({ session, nameInputTitle, moneyInputTitle, pageTitle }) {
   );
 }
 
-export default Form;
+export default GoalsForm;

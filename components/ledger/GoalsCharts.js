@@ -1,11 +1,11 @@
 import React from "react";
 
-function Goals() {
+function GoalsCharts() {
   return (
     <div className="text-center mt-10 border-t-2 ">
-      <h1>Goals</h1>
+      <h1>GoalsCharts</h1>
     </div>
   );
 }
 
-export default Goals;
+export default GoalsCharts;

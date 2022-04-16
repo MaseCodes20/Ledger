@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Goals from "./Goals";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../../firebase";
 import DoughnutChart from "../DoughnutChart";
 import BarChart from "../BarChart";
+import GoalsCharts from "./GoalsCharts";
 
 function Data({ session }) {
   const [incomes, setIncomes] = useState([]);
@@ -65,7 +65,7 @@ function Data({ session }) {
       </div>
 
       {/* Goals pie chart */}
-      <Goals />
+      <GoalsCharts />
     </div>
   );
 }

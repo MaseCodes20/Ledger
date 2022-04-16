@@ -35,7 +35,7 @@ function Income({ session }) {
 
       {incomes && (
         <>
-          <div className="grid lg:grid-cols-4 gap-1 justify-items-center mt-4">
+          <div className="incomeAndExpenseGrid">
             {incomes?.map((income) => {
               const { job, income: salary, id } = income;
               return (

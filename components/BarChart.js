@@ -51,6 +51,12 @@ function BarChart({ money, name, label }) {
           callback: function (value) {
             return `$${value}`;
           },
+          color: "white",
+        },
+      },
+      x: {
+        ticks: {
+          color: "white",
         },
       },
     },

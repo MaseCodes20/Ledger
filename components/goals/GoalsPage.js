@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import useFetchSession from "../../hooks/useFetchSession";
+import Footer from "../Footer";
 import LoadingScreen from "../LoadingScreen";
 import MobileMenu from "../MobileMenu";
 import SideBar from "../SideBar";
@@ -25,6 +26,10 @@ function GoalsPage() {
               <MobileMenu session={session} />
               <SideBar />
               <Goals session={session} />
+
+              <div className="lg:hidden mt-10">
+                <Footer />
+              </div>
             </div>
           )}
         </>

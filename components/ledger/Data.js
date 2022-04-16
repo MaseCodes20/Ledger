@@ -77,7 +77,6 @@ function Data({ session }) {
         </div>
       </div>
 
-      {/* Goals pie chart */}
       <GoalsCharts goals={goals} />
     </div>
   );

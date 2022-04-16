@@ -1,8 +1,13 @@
 import { Menu } from "@headlessui/react";
 import { useRouter } from "next/router";
 import {
+  CashIcon,
+  CreditCardIcon,
   FilmIcon,
   FireIcon,
+  GiftIcon,
+  HomeIcon,
+  LogoutIcon,
   MenuIcon,
   PlayIcon,
   StarIcon,
@@ -39,7 +44,7 @@ function MobileMenu({ session }) {
                   }`}
                   onClick={() => router.push("/")}
                 >
-                  <PlayIcon className="menuIcon" />
+                  <HomeIcon className="menuIcon" />
                   HOME
                 </a>
               )}
@@ -52,7 +57,7 @@ function MobileMenu({ session }) {
                   }`}
                   onClick={() => router.push("/income")}
                 >
-                  <FilmIcon className="menuIcon" />
+                  <CashIcon className="menuIcon" />
                   INCOME
                 </a>
               )}
@@ -65,7 +70,7 @@ function MobileMenu({ session }) {
                   }`}
                   onClick={() => router.push("/expense")}
                 >
-                  <FireIcon className="menuIcon" />
+                  <CreditCardIcon className="menuIcon" />
                   EXPENSE
                 </a>
               )}
@@ -78,7 +83,7 @@ function MobileMenu({ session }) {
                   }`}
                   onClick={() => router.push("/goals")}
                 >
-                  <FireIcon className="menuIcon" />
+                  <GiftIcon className="menuIcon" />
                   GOALS
                 </a>
               )}
@@ -91,7 +96,7 @@ function MobileMenu({ session }) {
                   }`}
                   onClick={signOut}
                 >
-                  <FireIcon className="menuIcon" />
+                  <LogoutIcon className="menuIcon" />
                   SIGNOUT
                 </a>
               )}

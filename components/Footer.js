@@ -3,7 +3,7 @@ import { MailIcon } from "@heroicons/react/solid";
 
 function Footer() {
   return (
-    <div className="h-[87px] pt-2 border-t-2 border-[#8985F2] absolute bottom-0 w-full">
+    <div className="h-[87px] pt-2 border-t-2 border-[#8985F2] lg:absolute bg-[#151426] bottom-0 w-full">
       <div className="text-center text-xs">
         <p>Built and designed by Todd Mason</p>
 

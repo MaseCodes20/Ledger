@@ -1,6 +1,7 @@
 import React from "react";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import Footer from "./Footer";
 
 function SideBar() {
   const { data: session } = useSession();
@@ -10,7 +11,7 @@ function SideBar() {
   const { image, name } = session.user;
   return (
     <div className="hidden lg:flex">
-      <div className="w-[300px] h-screen bg-[#151426] text-white border-r-2 border-[#8985F2]">
+      <div className="relative w-[300px] h-screen bg-[#151426] text-white border-r-2 border-[#8985F2]">
         <div className="flex items-center p-4 border-b-2 border-[#8985F2]">
           <img
             src={image}
@@ -20,7 +21,7 @@ function SideBar() {
           />
           <div className="ml-3">
             <h1 className="text-xl">{name}</h1>
-            <button onClick={signOut}>sign out</button>
+            <button onClick={signOut}>Sign out</button>
           </div>
         </div>
 
@@ -48,6 +49,8 @@ function SideBar() {
             Goals
           </button>
         </nav>
+
+        <Footer />
       </div>
     </div>
   );

@@ -19,7 +19,7 @@
     @apply lg:flex min-h-screen lg:h-screen w-full;
   }
   .rightSideContainer {
-    @apply flex-1 relative overflow-y-auto bg-[#151426];
+    @apply flex-1 relative min-h-screen overflow-y-auto bg-[#151426];
   }
   .updateDeleteButtons {
     @apply bg-white text-black p-1 rounded-md mt-2;

@@ -20,14 +20,20 @@ function MobileMenu({ session }) {
   const { image, name } = session.user;
   return (
     <div className="flex justify-between items-center sticky top-0 h-10 z-10 w-full bg-[#36a2eb] lg:hidden">
-      <div className="ml-4 flex items-center">
-        <img
-          src={image}
-          alt="profile pic"
-          className="rounded-full h-7 cursor-pointer"
-          onClick={() => router.push("/")}
-        />
-        <h1 className="ml-3">{name}</h1>
+      <div className="ml-4 flex justify-between items-center w-full">
+        <div>
+          <h1 className="text-xl">Ledger</h1>
+        </div>
+
+        <div className="flex items-center mr-4">
+          <img
+            src={image}
+            alt="profile pic"
+            className="rounded-full h-7 cursor-pointer"
+            onClick={() => router.push("/")}
+          />
+          <h1 className="ml-3">{name}</h1>
+        </div>
       </div>
       <Menu as="div" className="mr-4">
         <Menu.Button className="menuButton" name="menu button">

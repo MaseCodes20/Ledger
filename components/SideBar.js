@@ -12,20 +12,24 @@ function SideBar() {
   return (
     <div className="hidden lg:flex">
       <div className="relative w-[300px] h-screen bg-[#151426] text-white border-r-2 border-[#8985F2]">
-        <div className="flex items-center p-4 border-b-2 border-[#8985F2]">
+        <div className="flex justify-between items-center p-4 border-b-2 border-[#8985F2]">
+          <div>
+            <h1 className="text-2xl">Ledger</h1>
+          </div>
           <img
             src={image}
             alt="profile pic"
             className="rounded-full h-12 cursor-pointer"
             onClick={() => router.push("/")}
           />
-          <div className="ml-3">
-            <h1 className="text-xl">{name}</h1>
-            <button onClick={signOut}>Sign out</button>
+          <div className="text-right">
+            <h1>{name}</h1>
+            <button onClick={signOut} className="text-sm">
+              Sign out
+            </button>
           </div>
         </div>
 
-        {/* Pages */}
         <nav className="flex flex-col mt-10">
           <button onClick={() => router.push("/")} className="sideBarButtons">
             Home

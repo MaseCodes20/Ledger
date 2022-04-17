@@ -4,6 +4,7 @@ import { db } from "../../firebase";
 import DoughnutChart from "../DoughnutChart";
 import BarChart from "../BarChart";
 import GoalsCharts from "./GoalsCharts";
+import WelcomeUser from "./WelcomeUser";
 
 function Data({ session }) {
   const [incomes, setIncomes] = useState([]);
@@ -65,19 +66,23 @@ function Data({ session }) {
 
   return (
     <div className="rightSideContainer">
-      <div className="lg:flex items-center w-full">
-        <DoughnutChart
-          billTotal={billTotal}
-          Remaining={Remaining}
-          incomeTotal={incomeTotal}
-        />
-        <div className="mt-10 mx-auto">
-          <BarChart money={getBills} name={getCompany} label={billsLabel} />
-          <BarChart money={getIncome} name={getJobs} label={incomeLabel} />
+      {incomeTotal > 0 ? (
+        <div className="lg:flex items-center w-full">
+          <DoughnutChart
+            billTotal={billTotal}
+            Remaining={Remaining}
+            incomeTotal={incomeTotal}
+          />
+          <div className="mt-10 mx-auto">
+            <BarChart money={getBills} name={getCompany} label={billsLabel} />
+            <BarChart money={getIncome} name={getJobs} label={incomeLabel} />
+          </div>
         </div>
-      </div>
+      ) : (
+        <WelcomeUser session={session} />
+      )}
 
-      <GoalsCharts goals={goals} />
+      {goals.length > 0 && <GoalsCharts goals={goals} />}
     </div>
   );
 }

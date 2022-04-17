@@ -37,7 +37,7 @@ function GoalsForm({
   };
   return (
     <div className="formContainer">
-      <h1 className="formTitle">Add your monthly {pageTitle}</h1>
+      <h1 className="formTitle">Add your {pageTitle}</h1>
       <form onSubmit={submitToDB}>
         <div className="formInputContainer">
           <p className="formInputTitle">{nameInputTitle}:</p>

@@ -5,7 +5,18 @@ function Footer() {
   return (
     <div className="h-[87px] pt-2 border-t-2 border-[#8985F2] lg:absolute bg-[#151426] bottom-0 w-full">
       <div className="text-center text-xs">
-        <p>Built and designed by Todd Mason</p>
+        <p>
+          Built and designed by{" "}
+          <span>
+            <a
+              href="https://www.masecodes.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Masecodes
+            </a>
+          </span>
+        </p>
 
         <div className="flex justify-center items-center mt-1">
           <p>All rights reserved.</p>

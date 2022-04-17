@@ -6,6 +6,9 @@
   .centeredOnScreen {
     @apply absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4;
   }
+  .welcomeUserCenteredSmallScreens {
+    @apply absolute top-1/4 left-2/4 -translate-y-1/4 -translate-x-2/4;
+  }
   .sideBarButtons {
     @apply text-lg font-semibold h-10 text-[#F26BDC] hover:bg-gray-600;
   }

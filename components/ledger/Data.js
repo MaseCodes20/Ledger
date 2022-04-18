@@ -1,51 +1,12 @@
-import { useEffect, useState } from "react";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
-import { db } from "../../firebase";
 import DoughnutChart from "../DoughnutChart";
 import BarChart from "../BarChart";
 import GoalsCharts from "./GoalsCharts";
 import WelcomeUser from "./WelcomeUser";
+import useFetchData from "../../hooks/useFetchData";
+import LoadingScreen from "../LoadingScreen";
 
 function Data({ session }) {
-  const [incomes, setIncomes] = useState([]);
-  const [bills, setBills] = useState([]);
-  const [goals, setGoals] = useState([]);
-
-  useEffect(() => {
-    onSnapshot(
-      query(
-        collection(db, "users", session.user.uid, "incomes"),
-        where("email", "==", session?.user.email)
-      ),
-      (snapshot) => {
-        setIncomes(snapshot.docs);
-      }
-    );
-  }, [db]);
-
-  useEffect(() => {
-    onSnapshot(
-      query(
-        collection(db, "users", session.user.uid, "expense"),
-        where("email", "==", session?.user.email)
-      ),
-      (snapshot) => {
-        setBills(snapshot.docs);
-      }
-    );
-  }, [db]);
-
-  useEffect(() => {
-    onSnapshot(
-      query(
-        collection(db, "users", session.user.uid, "goals"),
-        where("email", "==", session?.user.email)
-      ),
-      (snapshot) => {
-        setGoals(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-      }
-    );
-  }, [db]);
+  const { incomes, bills, goals, loadingIncomes } = useFetchData(session);
 
   const sum = (income) => {
     return income.reduce((a, b) => a + b, 0);
@@ -66,21 +27,35 @@ function Data({ session }) {
 
   return (
     <div className="rightSideContainer">
-      {incomeTotal > 0 ? (
-        <div className="lg:flex items-center w-full">
-          <DoughnutChart
-            billTotal={billTotal}
-            Remaining={Remaining}
-            incomeTotal={incomeTotal}
-          />
-          <div className="mt-10 mx-auto">
-            <BarChart money={getBills} name={getCompany} label={billsLabel} />
-            <BarChart money={getIncome} name={getJobs} label={incomeLabel} />
-          </div>
-        </div>
-      ) : (
-        <WelcomeUser session={session} />
+      {!loadingIncomes && (
+        <>
+          {incomeTotal > 0 ? (
+            <div className="lg:flex items-center w-full">
+              <DoughnutChart
+                billTotal={billTotal}
+                Remaining={Remaining}
+                incomeTotal={incomeTotal}
+              />
+              <div className="mt-10 mx-auto">
+                <BarChart
+                  money={getBills}
+                  name={getCompany}
+                  label={billsLabel}
+                />
+                <BarChart
+                  money={getIncome}
+                  name={getJobs}
+                  label={incomeLabel}
+                />
+              </div>
+            </div>
+          ) : (
+            <WelcomeUser session={session} goals={goals} />
+          )}
+        </>
       )}
+
+      {/* {!loadingIncomes && <WelcomeUser session={session} />} */}
 
       {goals.length > 0 && <GoalsCharts goals={goals} />}
     </div>

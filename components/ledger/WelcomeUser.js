@@ -1,6 +1,7 @@
 import React from "react";
+import { ChevronDoubleDownIcon } from "@heroicons/react/solid";
 
-function WelcomeUser({ session }) {
+function WelcomeUser({ session, goals }) {
   return (
     <div className="h-screen text-center">
       <div className="welcomeUserCenteredSmallScreens lg:centeredOnScreen">
@@ -11,11 +12,17 @@ function WelcomeUser({ session }) {
             On this page is where you will see the data visualization of your
             expense, income and goals!
           </p>
-          <p>
-            Use the Navigation on the left or the menu at the top to get
-            started.
+          <p className="hidden lg:flex">
+            Use the Navigation on the left to get started.
           </p>
+          <p className="lg:hidden">Use the menu at the top to get started.</p>
         </div>
+        {goals.length > 0 && (
+          <>
+            <h1 className="text-[#F26BDC]  mt-10 mb-2">Scroll to see goals</h1>
+            <ChevronDoubleDownIcon className="h-10 mx-auto animate-bounce text-[#F26BDC]" />
+          </>
+        )}
       </div>
     </div>
   );

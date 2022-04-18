@@ -3,14 +3,10 @@ import { useRouter } from "next/router";
 import {
   CashIcon,
   CreditCardIcon,
-  FilmIcon,
-  FireIcon,
   GiftIcon,
   HomeIcon,
   LogoutIcon,
   MenuIcon,
-  PlayIcon,
-  StarIcon,
 } from "@heroicons/react/solid";
 import { signOut } from "next-auth/react";
 

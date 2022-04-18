@@ -23,7 +23,9 @@ function Data({ session }) {
   const Remaining = incomeTotal - billTotal;
 
   const billsLabel = "Bills";
+  const billsColor = "rgba(255, 99, 132, 0.6)";
   const incomeLabel = "Income";
+  const incomeColor = "rgba(34, 197, 94, .6)";
 
   return (
     <div className="rightSideContainer">
@@ -41,11 +43,13 @@ function Data({ session }) {
                   money={getBills}
                   name={getCompany}
                   label={billsLabel}
+                  color={billsColor}
                 />
                 <BarChart
                   money={getIncome}
                   name={getJobs}
                   label={incomeLabel}
+                  color={incomeColor}
                 />
               </div>
             </div>

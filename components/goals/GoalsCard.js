@@ -111,11 +111,11 @@ function GoalsCard({
             <div className="flex justify-center mt-3">
               <input
                 type="submit"
-                className="cursor-pointer rounded-full bg-white text-black p-1 mx-1"
+                className="submitAndCancelButtons submitButton"
               />
               <button
                 onClick={() => setSelected(null)}
-                className="rounded-full bg-white text-black p-1 mx-1"
+                className="submitAndCancelButtons cancelButton"
               >
                 Cancel
               </button>

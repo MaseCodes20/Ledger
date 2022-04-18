@@ -8,12 +8,15 @@ function UpdateDeleteButtons({ id, setSelected, session, pageTitle }) {
   };
   return (
     <div className="flex justify-between">
-      <button onClick={() => setSelected(id)} className="updateDeleteButtons">
+      <button
+        onClick={() => setSelected(id)}
+        className="updateDeleteButtons updateButton"
+      >
         update
       </button>
       <button
         onClick={() => deleteDocument(id)}
-        className="updateDeleteButtons"
+        className="updateDeleteButtons deleteButton"
       >
         delete
       </button>

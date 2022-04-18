@@ -22,7 +22,22 @@
     @apply flex-1 relative min-h-screen overflow-y-auto bg-[#151426];
   }
   .updateDeleteButtons {
-    @apply bg-white text-black p-1 rounded-md mt-2;
+    @apply text-black font-semibold p-1 rounded-md mt-2;
+  }
+  .deleteButton {
+    @apply bg-red-500 hover:bg-red-700;
+  }
+  .updateButton {
+    @apply bg-yellow-300 hover:bg-yellow-700;
+  }
+  .submitAndCancelButtons {
+    @apply text-black p-1 mx-1 rounded-full font-semibold;
+  }
+  .submitButton {
+    @apply cursor-pointer bg-green-500 hover:bg-green-700;
+  }
+  .cancelButton {
+    @apply bg-red-500 hover:bg-red-700;
   }
   .totalIncomeContainer {
     @apply lg:text-black text-center font-bold centeredOnScreen mt-4;

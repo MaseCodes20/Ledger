@@ -3,7 +3,6 @@ import BarChart from "../BarChart";
 import GoalsCharts from "./GoalsCharts";
 import WelcomeUser from "./WelcomeUser";
 import useFetchData from "../../hooks/useFetchData";
-import LoadingScreen from "../LoadingScreen";
 
 function Data({ session }) {
   const { incomes, bills, goals, loadingIncomes } = useFetchData(session);

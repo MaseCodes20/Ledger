@@ -20,7 +20,9 @@ function useFetchData(session) {
       ),
       (snapshot) => {
         if (mounted) {
-          setIncomes(snapshot.docs);
+          setIncomes(
+            snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+          );
           setLoadingIncomes(false);
         }
       }
@@ -32,7 +34,7 @@ function useFetchData(session) {
       ),
       (snapshot) => {
         if (mounted) {
-          setBills(snapshot.docs);
+          setBills(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
           setLoadingExpense(false);
         }
       }

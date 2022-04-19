@@ -1,11 +1,9 @@
-import { collection, onSnapshot, query, where } from "firebase/firestore";
-import { useState, useEffect } from "react";
-import { db } from "../../firebase";
+import useFetchData from "../../hooks/useFetchData";
 import GoalsCard from "./GoalsCard";
 import GoalsForm from "./GoalsForm";
 
 function Goals({ session }) {
-  const [goals, setGoals] = useState([]);
+  const { goals } = useFetchData(session);
 
   const cardTitle = "Goal";
   const pageTitle = "goals";
@@ -13,18 +11,6 @@ function Goals({ session }) {
   const moneyInputTitle = "amount";
   const savedMoneyInputTitle = "money saved";
   const savedMoneyTitle = "savedMoney";
-
-  useEffect(() => {
-    onSnapshot(
-      query(
-        collection(db, "users", session.user.uid, "goals"),
-        where("email", "==", session?.user.email)
-      ),
-      (snapshot) => {
-        setGoals(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-      }
-    );
-  }, [db]);
 
   return (
     <div className="rightSideContainer">
@@ -60,8 +46,6 @@ function Goals({ session }) {
               );
             })}
           </div>
-
-          {/* <p>{sumIncome(getSalary)}</p> */}
         </>
       )}
     </div>

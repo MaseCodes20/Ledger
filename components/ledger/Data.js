@@ -11,10 +11,10 @@ function Data({ session }) {
     return income.reduce((a, b) => a + b, 0);
   };
 
-  const getIncome = incomes.map((income) => income.data().income);
-  const getJobs = incomes.map((name) => name.data().job);
-  const getBills = bills.map((bill) => bill.data().fee);
-  const getCompany = bills.map((name) => name.data().expense);
+  const getIncome = incomes.map((incomes) => incomes.income);
+  const getJobs = incomes.map((name) => name.job);
+  const getBills = bills.map((bill) => bill.fee);
+  const getCompany = bills.map((name) => name.expense);
 
   const incomeTotal = sum(getIncome);
   const billTotal = sum(getBills);

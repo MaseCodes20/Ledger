@@ -23,7 +23,7 @@ export default function Home() {
         { merge: true }
       );
     }
-  }, [session][db]);
+  }, [session]);
 
   return (
     <div className="pageContainer">

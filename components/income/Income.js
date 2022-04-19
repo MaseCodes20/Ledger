@@ -1,28 +1,14 @@
-import { useEffect, useState } from "react";
-import { db } from "../../firebase";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
 import ExpenseAndIncomeCard from "../ExpenseAndIncomeCard";
 import Form from "../Form";
+import useFetchData from "../../hooks/useFetchData";
 
 function Income({ session }) {
-  const [incomes, setIncomes] = useState([]);
+  const { incomes } = useFetchData(session);
 
   const cardTitle = "Income";
   const incomePageTitle = "incomes";
   const nameInputTitle = "job";
   const moneyInputTitle = "income";
-
-  useEffect(() => {
-    onSnapshot(
-      query(
-        collection(db, "users", session.user.uid, "incomes"),
-        where("email", "==", session?.user.email)
-      ),
-      (snapshot) => {
-        setIncomes(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-      }
-    );
-  }, [db]);
 
   return (
     <div className="rightSideContainer">

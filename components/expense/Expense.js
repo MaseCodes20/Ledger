@@ -1,28 +1,14 @@
-import { collection, onSnapshot, query, where } from "firebase/firestore";
-import { useState, useEffect, useRef } from "react";
-import { db } from "../../firebase";
+import useFetchData from "../../hooks/useFetchData";
 import ExpenseAndIncomeCard from "../ExpenseAndIncomeCard";
 import Form from "../Form";
 
 function Expense({ session }) {
-  const [bills, setBills] = useState([]);
+  const { bills } = useFetchData(session);
 
   const cardTitle = "Bill";
   const pageTitle = "expense";
   const nameInputTitle = "expense";
   const moneyInputTitle = "fee";
-
-  useEffect(() => {
-    onSnapshot(
-      query(
-        collection(db, "users", session.user.uid, "expense"),
-        where("email", "==", session?.user.email)
-      ),
-      (snapshot) => {
-        setBills(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-      }
-    );
-  }, [db]);
 
   return (
     <div className="rightSideContainer">
@@ -53,8 +39,6 @@ function Expense({ session }) {
               );
             })}
           </div>
-
-          {/* <p>{sumIncome(getSalary)}</p> */}
         </>
       )}
     </div>

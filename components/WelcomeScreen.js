@@ -8,7 +8,7 @@ function WelcomeScreen() {
     <div className="relative min-h-screen">
       <div className="sticky top-0 flex justify-center items-center bg-[#151426] p-2 z-10 w-full h-fit ">
         <h1 className="text-3xl lg:text-5xl text-[#F26BDC]">
-          Welcome To Ledger
+          Welcome To LedgerMe
         </h1>
         <button
           onClick={signIn}

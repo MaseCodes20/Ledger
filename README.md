@@ -1,3 +1,15 @@
+LedgerMe
+
+This web app allows you to track your expense and set goals. Visually see what you're spending your money on and how much you're spending, whether you're over or under your monthly budget. Which will help you become more financially aware!
+
+
+![Expense-bills-incomeChartsHomePage](https://user-images.githubusercontent.com/95643884/164040376-a842df3c-748f-4f47-b08e-8bc0619c5bc2.png)
+![GoalsChartSectionOnHompage](https://user-images.githubusercontent.com/95643884/164040508-58979359-b6e5-4aa3-a738-dc54f5f04356.png)
+
+Use the income, expense and goals page to add, update or delete.
+![GoalsPageCardUpdateForm](https://user-images.githubusercontent.com/95643884/164040659-9439e346-6bf8-4bb2-a889-3467450606c9.png)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

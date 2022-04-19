@@ -3,7 +3,7 @@ import { getProviders, signIn } from "next-auth/react";
 export default function SignIn({ providers }) {
   return (
     <div className="pageContainer">
-      <div className="centeredOnScreen">
+      <div className="centeredOnScreen text-center">
         <div className="text-center mb-3">
           <h1 className="text-5xl mb-1">LedgerMe</h1>
           <p>Expense Tracker</p>

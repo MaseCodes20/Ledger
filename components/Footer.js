@@ -1,5 +1,6 @@
 import React from "react";
 import { MailIcon } from "@heroicons/react/solid";
+import Image from "next/image";
 
 function Footer() {
   return (
@@ -20,11 +21,15 @@ function Footer() {
 
         <div className="flex justify-center items-center mt-1">
           <p>All rights reserved.</p>
-          <img
-            src="copyrightlogoWhite.png"
-            className="h-4 ml-1 mix-blend-screen"
-            alt="copyright logo"
-          />
+          <div className="relative h-4 w-4">
+            <Image
+              src="/copyrightlogoWhite.png"
+              className="h-4 ml-1 mix-blend-screen"
+              alt="copyright logo"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
         </div>
       </div>
       <div className="mt-2 flex justify-center items-center">
@@ -34,7 +39,15 @@ function Footer() {
           rel="noreferrer"
           className="mr-1 text-white"
         >
-          <img src="LI-In-Bugwhite.png" className="h-6" alt="GitHub logo" />
+          <div className="relative h-6 w-6">
+            <Image
+              src="/LI-In-Bugwhite.png"
+              className="h-6"
+              alt="LinkedIn logo"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
         </a>
 
         <a
@@ -43,11 +56,15 @@ function Footer() {
           rel="noreferrer"
           className="mx-3"
         >
-          <img
-            src="GitHub-Mark-Light-120px-plus.png"
-            className="h-6"
-            alt="GitHub logo"
-          />
+          <div className="relative h-6 w-6">
+            <Image
+              src="/GitHub-Mark-Light-120px-plus.png"
+              className="h-6"
+              alt="GitHub logo"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
         </a>
 
         <a

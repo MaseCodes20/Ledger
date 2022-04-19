@@ -1,6 +1,6 @@
 import React from "react";
 import "chart.js/auto";
-import { Bar, Chart } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 function BarChart({ money, name, label, color }) {
   const data = {

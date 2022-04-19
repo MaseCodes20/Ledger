@@ -5,7 +5,7 @@ export default function SignIn({ providers }) {
     <div className="pageContainer">
       <div className="centeredOnScreen">
         <div className="text-center mb-3">
-          <h1 className="text-5xl mb-1">Legder</h1>
+          <h1 className="text-5xl mb-1">LedgerMe</h1>
           <p>Expense Tracker</p>
         </div>
 

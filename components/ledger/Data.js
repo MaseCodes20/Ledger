@@ -55,12 +55,10 @@ function Data({ session }) {
           ) : (
             <WelcomeUser session={session} goals={goals} />
           )}
+
+          {goals.length > 0 && <GoalsCharts goals={goals} />}
         </>
       )}
-
-      {/* {!loadingIncomes && <WelcomeUser session={session} />} */}
-
-      {goals.length > 0 && <GoalsCharts goals={goals} />}
     </div>
   );
 }

@@ -12,7 +12,8 @@ function WelcomeScreen() {
         </h1>
         <button
           onClick={signIn}
-          className="mt-4 ml-3 bg-[#8985F2] rounded-full p-3 hover:bg-[#151426]"
+          className="mt-4 ml-3 bg-[#8985F2] text-[#151426] font-bold rounded-full p-3 hover:bg-[#151426] hover:text-white"
+          aria-label="Sign in button"
         >
           Sign in
         </button>

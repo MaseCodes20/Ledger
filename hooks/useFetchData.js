@@ -55,7 +55,7 @@ function useFetchData(session) {
     return () => {
       mounted = false;
     };
-  }, [db]);
+  }, [db, session, session.user.uid, session.user.email]);
 
   return {
     incomes,

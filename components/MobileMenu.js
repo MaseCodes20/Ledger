@@ -15,7 +15,7 @@ function MobileMenu({ session }) {
 
   const { image, name } = session.user;
   return (
-    <div className="flex justify-between items-center sticky top-0 h-10 z-10 w-full bg-[#36a2eb] lg:hidden">
+    <div className="flex justify-between items-center sticky top-0 h-10 z-10 w-full bg-[#151426] lg:hidden">
       <div className="ml-4 flex justify-between items-center w-full">
         <div>
           <h1 className="text-xl">LedgerMe</h1>
@@ -41,7 +41,7 @@ function MobileMenu({ session }) {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  className={`mobileMenuLink ${
+                  className={`mobileMenuLink menuItemsBorder ${
                     active && "mobileMenuLinkActive rounded-t-md"
                   }`}
                   onClick={() => router.push("/")}
@@ -54,7 +54,7 @@ function MobileMenu({ session }) {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  className={`mobileMenuLink ${
+                  className={`mobileMenuLink menuItemsBorder ${
                     active && "mobileMenuLinkActive"
                   }`}
                   onClick={() => router.push("/income")}
@@ -67,7 +67,7 @@ function MobileMenu({ session }) {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  className={`mobileMenuLink ${
+                  className={`mobileMenuLink menuItemsBorder ${
                     active && "mobileMenuLinkActive"
                   }`}
                   onClick={() => router.push("/expense")}
@@ -80,7 +80,7 @@ function MobileMenu({ session }) {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  className={`mobileMenuLink ${
+                  className={`mobileMenuLink menuItemsBorder ${
                     active && "mobileMenuLinkActive"
                   }`}
                   onClick={() => router.push("/goals")}

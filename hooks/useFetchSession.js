@@ -20,7 +20,7 @@ function useFetchSession() {
         { merge: true }
       );
     }
-  }, [session][db]);
+  }, [session, db]);
 
   return { session, status };
 }

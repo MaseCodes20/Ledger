@@ -71,6 +71,7 @@ function Footer() {
           href="mailto:todd.k.mason@gmail.com"
           rel="noreferrer"
           className="ml-1"
+          aria-label="Send mail link"
         >
           <MailIcon className="h-8 text-white" />
         </a>

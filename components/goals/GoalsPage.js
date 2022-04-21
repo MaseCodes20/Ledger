@@ -8,7 +8,8 @@ import SideBar from "../SideBar";
 import Goals from "./Goals";
 
 function GoalsPage() {
-  const { session, status } = useFetchSession();
+  const loggedIn = { required: true };
+  const { session, status } = useFetchSession(loggedIn);
 
   return (
     <>

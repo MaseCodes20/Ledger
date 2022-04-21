@@ -3,9 +3,9 @@ import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { db } from "../firebase";
 
-function useFetchSession() {
+function useFetchSession(obj) {
   const { data: session } = useSession();
-  const { status } = useSession({ required: true });
+  const { status } = useSession(obj);
 
   useEffect(() => {
     if (session) {

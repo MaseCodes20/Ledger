@@ -8,7 +8,8 @@ import SideBar from "../SideBar";
 import Income from "./Income";
 
 function IncomePage() {
-  const { session, status } = useFetchSession();
+  const loggedIn = { required: true };
+  const { session, status } = useFetchSession(loggedIn);
 
   return (
     <>

@@ -8,7 +8,8 @@ import SideBar from "../SideBar";
 import Expense from "./Expense";
 
 export default function ExpensePage() {
-  const { session, status } = useFetchSession();
+  const loggedIn = { required: true };
+  const { session, status } = useFetchSession(loggedIn);
 
   return (
     <>

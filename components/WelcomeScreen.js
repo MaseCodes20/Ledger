@@ -45,7 +45,7 @@ function WelcomeScreen() {
 
           <div className="welcomeScreenImageContainer">
             <Image
-              src="/landingpage/IncomePageFormAndCards.png"
+              src="/landingpage/IncomePageFormAndCardsV2.png"
               alt="Image of the income page form and cards"
               layout="fill"
               objectFit="contain"
@@ -56,7 +56,7 @@ function WelcomeScreen() {
         <section className="welcomeScreenSections mt-5 mb-10">
           <div className="welcomeScreenImageContainer">
             <Image
-              src="/landingpage/GoalsPageCardUpdateForm.png"
+              src="/landingpage/GoalsPageCardUpdateFormV2.png"
               alt="Image of the Goals page card update form"
               layout="fill"
               objectFit="contain"

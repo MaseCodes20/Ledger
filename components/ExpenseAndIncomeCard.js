@@ -68,7 +68,7 @@ function ExpenseAndIncomeCard({
                 type="text"
                 ref={nameInputRef}
                 placeholder="name...."
-                className="w-full text-black"
+                className="formInput"
               />
             </div>
 
@@ -78,7 +78,7 @@ function ExpenseAndIncomeCard({
                 type="number"
                 ref={moneyInputRef}
                 placeholder="amount...."
-                className="w-full text-black"
+                className="formInput"
               />
             </div>
 

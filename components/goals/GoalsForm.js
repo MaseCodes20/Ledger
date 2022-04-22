@@ -48,7 +48,7 @@ function GoalsForm({
             type="text"
             ref={nameInputRef}
             placeholder="name...."
-            className="fromInput"
+            className="formInput"
           />
         </div>
 
@@ -58,7 +58,7 @@ function GoalsForm({
             type="number"
             ref={moneyInputRef}
             placeholder="amount...."
-            className="fromInput"
+            className="formInput"
           />
         </div>
 
@@ -68,14 +68,11 @@ function GoalsForm({
             type="number"
             ref={savedMoneyInputRef}
             placeholder="amount...."
-            className="fromInput"
+            className="formInput"
           />
         </div>
 
-        <input
-          type="submit"
-          className="cursor-pointer rounded-full bg-white text-black p-1 mt-2"
-        />
+        <input type="submit" className="formSubmitButton" />
       </form>
     </div>
   );

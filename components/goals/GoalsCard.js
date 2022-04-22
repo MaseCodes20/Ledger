@@ -43,7 +43,7 @@ function GoalsCard({
       [savedMoneyTitle]:
         savedMoneyInputRef.current.value !== ""
           ? parseInt(savedMoneyInputRef.current.value)
-          : savedMoneyTitle,
+          : saved,
       timestamp: serverTimestamp(),
     });
 
@@ -84,7 +84,7 @@ function GoalsCard({
                 type="text"
                 ref={nameInputRef}
                 placeholder="name...."
-                className="w-full text-black"
+                className="formInput"
               />
             </div>
 
@@ -94,7 +94,7 @@ function GoalsCard({
                 type="number"
                 ref={moneyInputRef}
                 placeholder="amount...."
-                className="w-full text-black"
+                className="formInput"
               />
             </div>
 
@@ -104,7 +104,7 @@ function GoalsCard({
                 type="number"
                 ref={savedMoneyInputRef}
                 placeholder="amount...."
-                className="w-full text-black"
+                className="formInput"
               />
             </div>
 

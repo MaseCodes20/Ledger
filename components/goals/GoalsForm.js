@@ -24,7 +24,10 @@ function GoalsForm({
       {
         [nameInputTitle]: nameInputRef.current.value,
         [moneyInputTitle]: parseInt(moneyInputRef.current.value),
-        [savedMoneyInputTitle]: parseInt(savedMoneyInputRef.current.value),
+        [savedMoneyInputTitle]:
+          savedMoneyInputRef.current.value !== ""
+            ? parseInt(savedMoneyInputRef.current.value)
+            : 0,
         userID: session.user.uid,
         email: session.user.email,
         timestamp: serverTimestamp(),

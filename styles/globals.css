@@ -103,3 +103,16 @@
     @apply grid md:grid-cols-3 xl:grid-cols-4 gap-1 justify-items-center mt-4;
   }
 }
+
+::-webkit-scrollbar {
+  width: 0.7em;
+}
+
+::-webkit-scrollbar-track {
+  background: #231b40;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8985f2;
+  border-radius: 100vw;
+}

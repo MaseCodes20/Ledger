@@ -32,7 +32,11 @@ function MobileMenu({ session }) {
         </div>
       </div>
       <Menu as="div" className="mr-4">
-        <Menu.Button className="menuButton" name="menu button">
+        <Menu.Button
+          className="menuButton"
+          name="menu button"
+          aria-label="menu button"
+        >
           <MenuIcon className="h-7 lg:hidden hover:text-pink-500" />
         </Menu.Button>
 

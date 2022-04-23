@@ -90,6 +90,7 @@ function ExpenseAndIncomeCard({
               <button
                 onClick={() => setSelected(null)}
                 className="submitAndCancelButtons cancelButton"
+                aria-label="Cancel button"
               >
                 Cancel
               </button>

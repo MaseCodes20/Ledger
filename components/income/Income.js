@@ -2,6 +2,8 @@ import ExpenseAndIncomeCard from "../ExpenseAndIncomeCard";
 import Form from "../Form";
 import useFetchData from "../../hooks/useFetchData";
 import LoadingScreen from "../LoadingScreen";
+import ShowTotal from "../ShowTotal";
+import total from "../../utils/total";
 
 function Income({ session }) {
   const { incomes, loadingIncomes } = useFetchData(session);
@@ -11,10 +13,7 @@ function Income({ session }) {
   const nameInputTitle = "job";
   const moneyInputTitle = "income";
 
-  const total = incomes
-    ?.map((income) => income.income)
-    .reduce((a, c) => a + c, 0);
-  // console.log("total:", total);
+  const incomeTotal = total(incomes, moneyInputTitle);
   return (
     <div className="rightSideContainer">
       <Form
@@ -30,6 +29,8 @@ function Income({ session }) {
         <>
           {incomes && (
             <>
+              <ShowTotal title={cardTitle} total={incomeTotal} />
+
               <div className="incomeAndExpenseGrid">
                 {incomes?.map((income) => {
                   const { job, income: salary, id } = income;

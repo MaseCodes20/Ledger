@@ -1,7 +1,9 @@
 import useFetchData from "../../hooks/useFetchData";
+import total from "../../utils/total";
 import ExpenseAndIncomeCard from "../ExpenseAndIncomeCard";
 import Form from "../Form";
 import LoadingScreen from "../LoadingScreen";
+import ShowTotal from "../ShowTotal";
 
 function Expense({ session }) {
   const { bills, loadingExpense } = useFetchData(session);
@@ -10,6 +12,8 @@ function Expense({ session }) {
   const pageTitle = "expense";
   const nameInputTitle = "expense";
   const moneyInputTitle = "fee";
+
+  const billsTotal = total(bills, moneyInputTitle);
 
   return (
     <div className="rightSideContainer">
@@ -23,6 +27,8 @@ function Expense({ session }) {
         <LoadingScreen />
       ) : (
         <>
+          <ShowTotal title={`${cardTitle}s`} total={billsTotal} />
+
           {bills && (
             <>
               <div className="incomeAndExpenseGrid">

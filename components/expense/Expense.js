@@ -1,9 +1,10 @@
 import useFetchData from "../../hooks/useFetchData";
 import ExpenseAndIncomeCard from "../ExpenseAndIncomeCard";
 import Form from "../Form";
+import LoadingScreen from "../LoadingScreen";
 
 function Expense({ session }) {
-  const { bills } = useFetchData(session);
+  const { bills, loadingExpense } = useFetchData(session);
 
   const cardTitle = "Bill";
   const pageTitle = "expense";
@@ -18,27 +19,32 @@ function Expense({ session }) {
         nameInputTitle={nameInputTitle}
         moneyInputTitle={moneyInputTitle}
       />
-
-      {bills && (
+      {loadingExpense ? (
+        <LoadingScreen />
+      ) : (
         <>
-          <div className="incomeAndExpenseGrid">
-            {bills?.map((bill) => {
-              const { expense, fee: debt, id } = bill;
-              return (
-                <ExpenseAndIncomeCard
-                  key={id}
-                  id={id}
-                  session={session}
-                  pageTitle={pageTitle}
-                  money={debt}
-                  name={expense}
-                  nameInputTitle={nameInputTitle}
-                  moneyInputTitle={moneyInputTitle}
-                  cardTitle={cardTitle}
-                />
-              );
-            })}
-          </div>
+          {bills && (
+            <>
+              <div className="incomeAndExpenseGrid">
+                {bills?.map((bill) => {
+                  const { expense, fee: debt, id } = bill;
+                  return (
+                    <ExpenseAndIncomeCard
+                      key={id}
+                      id={id}
+                      session={session}
+                      pageTitle={pageTitle}
+                      money={debt}
+                      name={expense}
+                      nameInputTitle={nameInputTitle}
+                      moneyInputTitle={moneyInputTitle}
+                      cardTitle={cardTitle}
+                    />
+                  );
+                })}
+              </div>
+            </>
+          )}
         </>
       )}
     </div>

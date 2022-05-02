@@ -1,9 +1,10 @@
 import useFetchData from "../../hooks/useFetchData";
+import LoadingScreen from "../LoadingScreen";
 import GoalsCard from "./GoalsCard";
 import GoalsForm from "./GoalsForm";
 
 function Goals({ session }) {
-  const { goals } = useFetchData(session);
+  const { goals, loadingGoals } = useFetchData(session);
 
   const cardTitle = "Goal";
   const pageTitle = "goals";
@@ -23,29 +24,35 @@ function Goals({ session }) {
         savedMoneyTitle={savedMoneyInputTitle}
       />
 
-      {goals && (
+      {loadingGoals ? (
+        <LoadingScreen />
+      ) : (
         <>
-          <div className="grid md:grid-cols-3 xl:grid-cols-4 gap-1 justify-items-center mt-4">
-            {goals?.map((goal) => {
-              const { goal: name, amount, id, savedMoney } = goal;
-              return (
-                <GoalsCard
-                  key={id}
-                  id={id}
-                  session={session}
-                  pageTitle={pageTitle}
-                  money={amount}
-                  saved={savedMoney}
-                  name={name}
-                  savedMoneyTitle={savedMoneyTitle}
-                  nameInputTitle={nameInputTitle}
-                  moneyInputTitle={moneyInputTitle}
-                  savedMoneyInputTitle={savedMoneyInputTitle}
-                  cardTitle={cardTitle}
-                />
-              );
-            })}
-          </div>
+          {goals && (
+            <>
+              <div className="grid md:grid-cols-3 xl:grid-cols-4 gap-1 justify-items-center mt-4">
+                {goals?.map((goal) => {
+                  const { goal: name, amount, id, savedMoney } = goal;
+                  return (
+                    <GoalsCard
+                      key={id}
+                      id={id}
+                      session={session}
+                      pageTitle={pageTitle}
+                      money={amount}
+                      saved={savedMoney}
+                      name={name}
+                      savedMoneyTitle={savedMoneyTitle}
+                      nameInputTitle={nameInputTitle}
+                      moneyInputTitle={moneyInputTitle}
+                      savedMoneyInputTitle={savedMoneyInputTitle}
+                      cardTitle={cardTitle}
+                    />
+                  );
+                })}
+              </div>
+            </>
+          )}
         </>
       )}
     </div>

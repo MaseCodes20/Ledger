@@ -87,6 +87,19 @@ function MobileMenu({ session }) {
                   className={`mobileMenuLink menuItemsBorder ${
                     active && "mobileMenuLinkActive"
                   }`}
+                  onClick={() => router.push("/investments")}
+                >
+                  <GiftIcon className="menuIcon" />
+                  INVESTMENTS
+                </a>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  className={`mobileMenuLink menuItemsBorder ${
+                    active && "mobileMenuLinkActive"
+                  }`}
                   onClick={() => router.push("/goals")}
                 >
                   <GiftIcon className="menuIcon" />

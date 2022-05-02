@@ -55,6 +55,12 @@ function SideBar() {
             Expense
           </button>
           <button
+            onClick={() => router.push("/investments")}
+            className="sideBarButtons"
+          >
+            Investments
+          </button>
+          <button
             onClick={() => router.push("/goals")}
             className="sideBarButtons"
           >

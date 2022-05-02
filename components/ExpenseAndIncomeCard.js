@@ -48,7 +48,7 @@ function ExpenseAndIncomeCard({
 
       <div className="flex">
         <p className="cardsInputTitle">{moneyInputTitle}:</p>
-        <p className="cardsValue">${money}</p>
+        <p className="cardsValue">${money.toLocaleString()}</p>
       </div>
 
       <UpdateDeleteButtons

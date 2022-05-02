@@ -38,7 +38,9 @@ function DoughnutChart({ billTotal, Remaining, incomeTotal }) {
             <div className="hidden lg:flex">
               <h1 className="mx-auto hidden lg:flex">Income</h1>
             </div>
-            <p className="text-sm lg:text-2xl mt-5 lg:mt-0">${incomeTotal}</p>
+            <p className="text-sm lg:text-2xl mt-5 lg:mt-0">
+              ${incomeTotal.toLocaleString()}
+            </p>
           </div>
         </div>
       </div>

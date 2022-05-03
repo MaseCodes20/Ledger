@@ -31,7 +31,7 @@ function Expense({ session }) {
 
           {bills && (
             <>
-              <div className="incomeAndExpenseGrid">
+              <div className="cardsGrid">
                 {bills?.map((bill) => {
                   const { expense, fee: debt, id } = bill;
                   return (

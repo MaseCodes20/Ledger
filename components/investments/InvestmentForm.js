@@ -61,7 +61,7 @@ function InvestmentForm({ session }) {
           />
         </div>
         <div className="formInputContainer">
-          <p className="formInputTitle">Yearly Dividend</p>
+          <p className="formInputTitle">Annual Dividend per share</p>
           <input
             type="number"
             ref={dividendRef}

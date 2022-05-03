@@ -31,7 +31,7 @@ function Income({ session }) {
             <>
               <ShowTotal title={cardTitle} total={incomeTotal} />
 
-              <div className="incomeAndExpenseGrid">
+              <div className="cardsGrid">
                 {incomes?.map((income) => {
                   const { job, income: salary, id } = income;
                   return (

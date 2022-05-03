@@ -6,9 +6,11 @@ function useFetchData(session) {
   const [incomes, setIncomes] = useState([]);
   const [bills, setBills] = useState([]);
   const [goals, setGoals] = useState([]);
+  const [investments, setInvestments] = useState();
   const [loadingIncomes, setLoadingIncomes] = useState(true);
   const [loadingExpense, setLoadingExpense] = useState(true);
   const [loadingGoals, setLoadingGoals] = useState(true);
+  const [loadingInvestments, setLoadingInvestments] = useState(true);
 
   useEffect(() => {
     let mounted = true;
@@ -27,6 +29,7 @@ function useFetchData(session) {
         }
       }
     );
+
     onSnapshot(
       query(
         collection(db, "users", session.user.uid, "expense"),
@@ -39,6 +42,7 @@ function useFetchData(session) {
         }
       }
     );
+
     onSnapshot(
       query(
         collection(db, "users", session.user.uid, "goals"),
@@ -52,6 +56,21 @@ function useFetchData(session) {
       }
     );
 
+    onSnapshot(
+      query(
+        collection(db, "users", session.user.uid, "investments"),
+        where("email", "==", session?.user.email)
+      ),
+      (snapshot) => {
+        if (mounted) {
+          setInvestments(
+            snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+          );
+          setLoadingInvestments(false);
+        }
+      }
+    );
+
     return () => {
       mounted = false;
     };
@@ -61,9 +80,11 @@ function useFetchData(session) {
     incomes,
     bills,
     goals,
+    investments,
     loadingIncomes,
     loadingExpense,
     loadingGoals,
+    loadingInvestments,
   };
 }
 

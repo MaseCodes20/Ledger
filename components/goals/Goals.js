@@ -30,7 +30,7 @@ function Goals({ session }) {
         <>
           {goals && (
             <>
-              <div className="grid md:grid-cols-3 xl:grid-cols-4 gap-1 justify-items-center mt-4">
+              <div className="cardsGrid">
                 {goals?.map((goal) => {
                   const { goal: name, amount, id, savedMoney } = goal;
                   return (

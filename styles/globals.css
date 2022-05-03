@@ -79,7 +79,7 @@
     @apply font-bold uppercase text-white;
   }
   .cardsInputTitle {
-    @apply mr-2 uppercase;
+    @apply mr-2 text-left uppercase;
   }
   .cardsValue {
     @apply text-[#F26BDC];
@@ -102,7 +102,7 @@
   .formSubmitButton {
     @apply cursor-pointer rounded-full bg-green-500 hover:bg-green-700 font-semibold text-black p-1 mt-2;
   }
-  .incomeAndExpenseGrid {
+  .cardsGrid {
     @apply grid md:grid-cols-3 xl:grid-cols-4 gap-1 justify-items-center mt-4;
   }
 }

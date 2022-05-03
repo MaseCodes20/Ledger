@@ -11,20 +11,18 @@ function Form({ session, nameInputTitle, moneyInputTitle, pageTitle }) {
     if (nameInputRef.current.value === "" || moneyInputRef.current.value === "")
       return;
 
-    const docRef = await addDoc(
-      collection(db, "users", session.user.uid, pageTitle),
-      {
-        [nameInputTitle]: nameInputRef.current.value,
-        [moneyInputTitle]: parseInt(moneyInputRef.current.value),
-        userID: session.user.uid,
-        email: session.user.email,
-        timestamp: serverTimestamp(),
-      }
-    );
+    await addDoc(collection(db, "users", session.user.uid, pageTitle), {
+      [nameInputTitle]: nameInputRef.current.value,
+      [moneyInputTitle]: parseInt(moneyInputRef.current.value),
+      userID: session.user.uid,
+      email: session.user.email,
+      timestamp: serverTimestamp(),
+    });
 
     nameInputRef.current.value = "";
     moneyInputRef.current.value = "";
   };
+
   return (
     <div className="formContainer">
       <h1 className="formTitle">Add your monthly {pageTitle}</h1>

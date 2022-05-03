@@ -19,20 +19,17 @@ function GoalsForm({
     if (nameInputRef.current.value === "" || moneyInputRef.current.value === "")
       return;
 
-    const docRef = await addDoc(
-      collection(db, "users", session.user.uid, pageTitle),
-      {
-        [nameInputTitle]: nameInputRef.current.value,
-        [moneyInputTitle]: parseInt(moneyInputRef.current.value),
-        [savedMoneyInputTitle]:
-          savedMoneyInputRef.current.value !== ""
-            ? parseInt(savedMoneyInputRef.current.value)
-            : 0,
-        userID: session.user.uid,
-        email: session.user.email,
-        timestamp: serverTimestamp(),
-      }
-    );
+    await addDoc(collection(db, "users", session.user.uid, pageTitle), {
+      [nameInputTitle]: nameInputRef.current.value,
+      [moneyInputTitle]: parseInt(moneyInputRef.current.value),
+      [savedMoneyInputTitle]:
+        savedMoneyInputRef.current.value !== ""
+          ? parseInt(savedMoneyInputRef.current.value)
+          : 0,
+      userID: session.user.uid,
+      email: session.user.email,
+      timestamp: serverTimestamp(),
+    });
 
     nameInputRef.current.value = "";
     moneyInputRef.current.value = "";

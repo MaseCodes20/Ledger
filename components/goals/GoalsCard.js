@@ -60,12 +60,12 @@ function GoalsCard({
 
       <div className="flex">
         <p className="cardsInputTitle">{moneyInputTitle}:</p>
-        <p className="cardsValue">${money}</p>
+        <p className="cardsValue">${money.toLocaleString()}</p>
       </div>
 
       <div className="flex">
         <p className="cardsInputTitle">{savedMoneyInputTitle}:</p>
-        <p className="cardsValue">${saved}</p>
+        <p className="cardsValue">${saved.toLocaleString()}</p>
       </div>
       <UpdateDeleteButtons
         id={id}

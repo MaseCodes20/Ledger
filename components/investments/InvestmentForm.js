@@ -16,8 +16,12 @@ function InvestmentForm({ session }) {
     await addDoc(collection(db, "users", session.user.uid, "investments"), {
       company: companyRef.current.value,
       marketValue: parseInt(marketValueRef.current.value),
-      shares: parseInt(sharesRef.current.value),
-      dividend: parseInt(dividendRef.current.value),
+      shares:
+        sharesRef.current.value !== "" ? parseInt(sharesRef.current.value) : 0,
+      dividend:
+        dividendRef.current.value !== ""
+          ? parseInt(dividendRef.current.value)
+          : 0,
       userID: session.user.uid,
       email: session.user.email,
       timestamp: serverTimestamp(),

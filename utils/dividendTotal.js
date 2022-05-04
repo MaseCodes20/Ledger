@@ -1,3 +1,6 @@
-const dividendTotal = (shares, dividend) => shares * dividend;
+const dividendTotal = (shares, dividend) => {
+  const total = shares * dividend;
+  return total.toFixed(2);
+};
 
 export default dividendTotal;

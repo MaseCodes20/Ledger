@@ -1,6 +1,7 @@
 import { doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useState, useRef } from "react";
 import { db } from "../../firebase";
+import dividendTotal from "../../utils/dividendTotal";
 import UpdateDeleteButtons from "../UpdateDeleteButtons";
 
 function InvestmentCard({ id, company, invested, shares, dividend, session }) {
@@ -44,6 +45,7 @@ function InvestmentCard({ id, company, invested, shares, dividend, session }) {
     setSelected(null);
   };
 
+  const totalDividend = dividendTotal(shares, dividend);
   return (
     <div className="cardsContainer">
       <h1 className="cardsTitle">Investment</h1>
@@ -65,6 +67,11 @@ function InvestmentCard({ id, company, invested, shares, dividend, session }) {
       <div className="flex items-center">
         <p className="cardsInputTitle">Annual Dividend Per Share:</p>
         <p className="cardsValue">${dividend.toLocaleString()}</p>
+      </div>
+
+      <div className="flex items-center">
+        <p className="cardsInputTitle">Dividend total:</p>
+        <p className="cardsValue">${totalDividend.toLocaleString()}</p>
       </div>
 
       <UpdateDeleteButtons

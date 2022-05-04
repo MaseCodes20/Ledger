@@ -1,6 +1,7 @@
 import { doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useState, useRef } from "react";
 import { db } from "../../firebase";
+import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
 import UpdateDeleteButtons from "../UpdateDeleteButtons";
 
 function GoalsCard({
@@ -54,17 +55,23 @@ function GoalsCard({
     <div className="cardsContainer">
       <h1 className="cardsTitle">{cardTitle}</h1>
       <div className="cardItemsContainer">
-        <p className="cardsInputTitle">{nameInputTitle}:</p>
+        <p className="cardsInputTitle">
+          {capitalizeFirstLetter(nameInputTitle)}:
+        </p>
         <p className="cardsValue">{name}</p>
       </div>
 
       <div className="cardItemsContainer">
-        <p className="cardsInputTitle">{moneyInputTitle}:</p>
+        <p className="cardsInputTitle">
+          {capitalizeFirstLetter(moneyInputTitle)}:
+        </p>
         <p className="cardsValue">${money.toLocaleString()}</p>
       </div>
 
       <div className="cardItemsContainer">
-        <p className="cardsInputTitle">{savedMoneyInputTitle}:</p>
+        <p className="cardsInputTitle">
+          {capitalizeFirstLetter(savedMoneyInputTitle)}:
+        </p>
         <p className="cardsValue">${saved.toLocaleString()}</p>
       </div>
       <UpdateDeleteButtons

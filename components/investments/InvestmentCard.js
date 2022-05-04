@@ -1,6 +1,7 @@
 import { doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useState, useRef } from "react";
 import { db } from "../../firebase";
+import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
 import dividendTotal from "../../utils/dividendTotal";
 import UpdateDeleteButtons from "../UpdateDeleteButtons";
 
@@ -50,27 +51,31 @@ function InvestmentCard({ id, company, invested, shares, dividend, session }) {
     <div className="cardsContainer">
       <h1 className="cardsTitle">Investment</h1>
       <div className="cardItemsContainer">
-        <p className="cardsInputTitle">company:</p>
+        <p className="cardsInputTitle">{capitalizeFirstLetter("company")}:</p>
         <p className="cardsValue">{company}</p>
       </div>
 
       <div className="cardItemsContainer">
-        <p className="cardsInputTitle">Invested:</p>
+        <p className="cardsInputTitle">{capitalizeFirstLetter("Invested")}:</p>
         <p className="cardsValue">${invested.toLocaleString()}</p>
       </div>
 
       <div className="cardItemsContainer">
-        <p className="cardsInputTitle">Shares:</p>
+        <p className="cardsInputTitle">{capitalizeFirstLetter("Shares")}:</p>
         <p className="cardsValue">{shares.toLocaleString()}</p>
       </div>
 
       <div className="cardItemsContainer items-center">
-        <p className="cardsInputTitle">Annual Dividend Per Share:</p>
+        <p className="cardsInputTitle">
+          {capitalizeFirstLetter("Annual Dividend Per Share")}:
+        </p>
         <p className="cardsValue">${dividend.toLocaleString()}</p>
       </div>
 
       <div className="cardItemsContainer items-center">
-        <p className="cardsInputTitle">Dividend total:</p>
+        <p className="cardsInputTitle">
+          {capitalizeFirstLetter("Dividend total")}:
+        </p>
         <p className="cardsValue">${totalDividend.toLocaleString()}</p>
       </div>
 

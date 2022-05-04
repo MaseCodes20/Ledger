@@ -2,6 +2,7 @@ import { doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useState, useRef } from "react";
 import { db } from "../firebase";
 import UpdateDeleteButtons from "./UpdateDeleteButtons";
+import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
 
 function ExpenseAndIncomeCard({
   id,
@@ -42,12 +43,16 @@ function ExpenseAndIncomeCard({
     <div className="cardsContainer">
       <h1 className="cardsTitle">{cardTitle}</h1>
       <div className="cardItemsContainer">
-        <p className="cardsInputTitle">{nameInputTitle}:</p>
+        <p className="cardsInputTitle">
+          {capitalizeFirstLetter(nameInputTitle)}:
+        </p>
         <p className="cardsValue">{name}</p>
       </div>
 
       <div className="cardItemsContainer">
-        <p className="cardsInputTitle">{moneyInputTitle}:</p>
+        <p className="cardsInputTitle">
+          {capitalizeFirstLetter(moneyInputTitle)}:
+        </p>
         <p className="cardsValue">${money.toLocaleString()}</p>
       </div>
 

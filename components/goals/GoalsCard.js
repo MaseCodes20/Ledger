@@ -53,17 +53,17 @@ function GoalsCard({
   return (
     <div className="cardsContainer">
       <h1 className="cardsTitle">{cardTitle}</h1>
-      <div className="flex">
+      <div className="cardItemsContainer">
         <p className="cardsInputTitle">{nameInputTitle}:</p>
         <p className="cardsValue">{name}</p>
       </div>
 
-      <div className="flex">
+      <div className="cardItemsContainer">
         <p className="cardsInputTitle">{moneyInputTitle}:</p>
         <p className="cardsValue">${money.toLocaleString()}</p>
       </div>
 
-      <div className="flex">
+      <div className="cardItemsContainer">
         <p className="cardsInputTitle">{savedMoneyInputTitle}:</p>
         <p className="cardsValue">${saved.toLocaleString()}</p>
       </div>

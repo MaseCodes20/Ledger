@@ -75,6 +75,9 @@
   .cardsContainer {
     @apply bg-[#231B40] border-[#8985F2] border-t-2 p-2 my-2 w-[200px] h-fit rounded-md text-center;
   }
+  .cardItemsContainer {
+    @apply flex border-b-2 border-[#8985F2] w-[98%];
+  }
   .cardsTitle {
     @apply font-bold uppercase text-white;
   }

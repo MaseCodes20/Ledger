@@ -49,27 +49,27 @@ function InvestmentCard({ id, company, invested, shares, dividend, session }) {
   return (
     <div className="cardsContainer">
       <h1 className="cardsTitle">Investment</h1>
-      <div className="flex">
+      <div className="cardItemsContainer">
         <p className="cardsInputTitle">company:</p>
         <p className="cardsValue">{company}</p>
       </div>
 
-      <div className="flex">
+      <div className="cardItemsContainer">
         <p className="cardsInputTitle">Invested:</p>
         <p className="cardsValue">${invested.toLocaleString()}</p>
       </div>
 
-      <div className="flex">
+      <div className="cardItemsContainer">
         <p className="cardsInputTitle">Shares:</p>
         <p className="cardsValue">{shares.toLocaleString()}</p>
       </div>
 
-      <div className="flex items-center">
+      <div className="cardItemsContainer items-center">
         <p className="cardsInputTitle">Annual Dividend Per Share:</p>
         <p className="cardsValue">${dividend.toLocaleString()}</p>
       </div>
 
-      <div className="flex items-center">
+      <div className="cardItemsContainer items-center">
         <p className="cardsInputTitle">Dividend total:</p>
         <p className="cardsValue">${totalDividend.toLocaleString()}</p>
       </div>
@@ -85,7 +85,7 @@ function InvestmentCard({ id, company, invested, shares, dividend, session }) {
         <div className="formContainer">
           <h1 className="formTitle text-[#BF9B6F]">Update</h1>
           <form onSubmit={(e) => updateInvestment(e, id)}>
-            <div className="flex my-2">
+            <div className="cardItemsContainer my-2">
               <p className="cardsInputTitle">Company:</p>
               <input
                 type="text"
@@ -95,7 +95,7 @@ function InvestmentCard({ id, company, invested, shares, dividend, session }) {
               />
             </div>
 
-            <div className="flex my-2">
+            <div className="cardItemsContainer my-2">
               <p className="cardsInputTitle">Invested:</p>
               <input
                 type="number"
@@ -105,7 +105,7 @@ function InvestmentCard({ id, company, invested, shares, dividend, session }) {
               />
             </div>
 
-            <div className="flex my-2">
+            <div className="cardItemsContainer my-2">
               <p className="cardsInputTitle">Shares:</p>
               <input
                 type="number"
@@ -117,7 +117,7 @@ function InvestmentCard({ id, company, invested, shares, dividend, session }) {
               />
             </div>
 
-            <div className="flex my-2">
+            <div className="cardItemsContainer my-2">
               <p className="cardsInputTitle">Annual Dividend Per Share:</p>
               <input
                 type="number"
@@ -129,7 +129,7 @@ function InvestmentCard({ id, company, invested, shares, dividend, session }) {
               />
             </div>
 
-            <div className="flex justify-center mt-3">
+            <div className="cardItemsContainer justify-center mt-3">
               <input
                 type="submit"
                 className="submitAndCancelButtons submitButton"

@@ -16,14 +16,14 @@ function Investments({ session }) {
       ) : (
         <div className="cardsGrid">
           {investments?.map((investment) => {
-            const { id, company, marketValue, shares, dividend } = investment;
+            const { id, company, invested, shares, dividend } = investment;
             return (
               <InvestmentCard
                 key={id}
                 id={id}
                 session={session}
                 company={company}
-                marketValue={marketValue}
+                invested={invested}
                 shares={shares}
                 dividend={dividend}
               />

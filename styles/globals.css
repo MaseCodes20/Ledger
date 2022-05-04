@@ -79,7 +79,7 @@
     @apply font-bold uppercase text-white;
   }
   .cardsInputTitle {
-    @apply mr-2 text-left uppercase;
+    @apply mr-2  flex-1 text-left uppercase;
   }
   .cardsValue {
     @apply text-[#F26BDC];
@@ -94,7 +94,7 @@
     @apply flex my-2;
   }
   .formInputTitle {
-    @apply mr-2 text-[#F26BDC] uppercase;
+    @apply mr-2 text-left w-fit text-[#F26BDC] uppercase;
   }
   .formInput {
     @apply w-full bg-white bg-opacity-30 shadow-lg text-lg rounded-xl placeholder:text-gray-800 pl-2 border-0 border-b-2 text-white border-[#8985F2] focus:ring-0 focus:outline-none focus:border-b-2 focus:border-[#F26BDC];

@@ -4,23 +4,25 @@ import { db } from "../../firebase";
 
 function InvestmentForm({ session }) {
   const companyRef = useRef();
-  const marketValueRef = useRef();
+  const investedRef = useRef();
   const sharesRef = useRef();
   const dividendRef = useRef();
 
   const submitInvestment = async (e) => {
     e.preventDefault();
-    if (companyRef.current.value === "" || marketValueRef.current.value === "")
+    if (companyRef.current.value === "" || investedRef.current.value === "")
       return;
 
     await addDoc(collection(db, "users", session.user.uid, "investments"), {
       company: companyRef.current.value,
-      marketValue: parseInt(marketValueRef.current.value),
+      invested: parseInt(investedRef.current.value),
       shares:
-        sharesRef.current.value !== "" ? parseInt(sharesRef.current.value) : 0,
+        sharesRef.current.value !== ""
+          ? parseFloat(sharesRef.current.value)
+          : 0,
       dividend:
         dividendRef.current.value !== ""
-          ? parseInt(dividendRef.current.value)
+          ? parseFloat(dividendRef.current.value).toFixed(2)
           : 0,
       userID: session.user.uid,
       email: session.user.email,
@@ -28,7 +30,7 @@ function InvestmentForm({ session }) {
     });
 
     companyRef.current.value = "";
-    marketValueRef.current.value = "";
+    investedRef.current.value = "";
     sharesRef.current.value = "";
     dividendRef.current.value = "";
   };
@@ -38,7 +40,7 @@ function InvestmentForm({ session }) {
       <h1>Add your Investment</h1>
       <form onSubmit={submitInvestment}>
         <div className="formInputContainer">
-          <p className="formInputTitle">Company</p>
+          <p className="formInputTitle">Company:</p>
           <input
             type="text"
             ref={companyRef}
@@ -47,30 +49,34 @@ function InvestmentForm({ session }) {
           />
         </div>
         <div className="formInputContainer">
-          <p className="formInputTitle">Market value</p>
+          <p className="formInputTitle">Money Invested:</p>
           <input
             type="number"
-            ref={marketValueRef}
+            ref={investedRef}
             placeholder="amount...."
             className="formInput"
           />
         </div>
         <div className="formInputContainer">
-          <p className="formInputTitle">Shares</p>
+          <p className="formInputTitle">Shares:</p>
           <input
             type="number"
             ref={sharesRef}
             placeholder="amount...."
             className="formInput"
+            step=".01"
+            pattern="^\d+(?:\.\d{1,2})?$"
           />
         </div>
         <div className="formInputContainer">
-          <p className="formInputTitle">Annual Dividend per share</p>
+          <p className="formInputTitle">Annual Dividend per share:</p>
           <input
             type="number"
             ref={dividendRef}
             placeholder="amount...."
             className="formInput"
+            step=".01"
+            pattern="^\d+(?:\.\d{1,2})?$"
           />
         </div>
 

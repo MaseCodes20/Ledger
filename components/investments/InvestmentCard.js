@@ -3,18 +3,11 @@ import { useState, useRef } from "react";
 import { db } from "../../firebase";
 import UpdateDeleteButtons from "../UpdateDeleteButtons";
 
-function InvestmentCard({
-  id,
-  company,
-  marketValue,
-  shares,
-  dividend,
-  session,
-}) {
+function InvestmentCard({ id, company, invested, shares, dividend, session }) {
   const [selected, setSelected] = useState(null);
 
   const companyRef = useRef();
-  const marketValueRef = useRef();
+  const investedRef = useRef();
   const sharesRef = useRef();
   const dividendRef = useRef();
 
@@ -22,7 +15,7 @@ function InvestmentCard({
     e.preventDefault();
     if (
       companyRef.current.value === "" &&
-      marketValueRef.current.value === "" &&
+      investedRef.current.value === "" &&
       sharesRef.current.value === "" &&
       dividendRef.current.value === ""
     )
@@ -33,17 +26,17 @@ function InvestmentCard({
     await updateDoc(documentRef, {
       company:
         companyRef.current.value !== "" ? companyRef.current.value : company,
-      marketValue:
-        marketValueRef.current.value !== ""
-          ? parseInt(marketValueRef.current.value)
-          : marketValue,
+      invested:
+        investedRef.current.value !== ""
+          ? parseInt(investedRef.current.value)
+          : invested,
       shares:
         sharesRef.current.value !== ""
-          ? parseInt(sharesRef.current.value)
+          ? parseFloat(sharesRef.current.value)
           : shares,
       dividend:
         dividendRef.current.value !== ""
-          ? parseInt(dividendRef.current.value)
+          ? parseFloat(dividendRef.current.value).toFixed(2)
           : dividend,
       timestamp: serverTimestamp(),
     });
@@ -60,8 +53,8 @@ function InvestmentCard({
       </div>
 
       <div className="flex">
-        <p className="cardsInputTitle">Market Value:</p>
-        <p className="cardsValue">${marketValue.toLocaleString()}</p>
+        <p className="cardsInputTitle">Invested:</p>
+        <p className="cardsValue">${invested.toLocaleString()}</p>
       </div>
 
       <div className="flex">
@@ -96,10 +89,10 @@ function InvestmentCard({
             </div>
 
             <div className="flex my-2">
-              <p className="cardsInputTitle">Market Value:</p>
+              <p className="cardsInputTitle">Invested:</p>
               <input
                 type="number"
-                ref={marketValueRef}
+                ref={investedRef}
                 placeholder="amount...."
                 className="formInput"
               />
@@ -112,6 +105,8 @@ function InvestmentCard({
                 ref={sharesRef}
                 placeholder="amount...."
                 className="formInput"
+                step=".01"
+                pattern="^\d+(?:\.\d{1,2})?$"
               />
             </div>
 
@@ -122,6 +117,8 @@ function InvestmentCard({
                 ref={dividendRef}
                 placeholder="amount...."
                 className="formInput"
+                step=".01"
+                pattern="^\d+(?:\.\d{1,2})?$"
               />
             </div>
 

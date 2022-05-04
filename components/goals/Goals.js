@@ -1,5 +1,7 @@
 import useFetchData from "../../hooks/useFetchData";
+import total from "../../utils/total";
 import LoadingScreen from "../LoadingScreen";
+import ShowTotal from "../ShowTotal";
 import GoalsCard from "./GoalsCard";
 import GoalsForm from "./GoalsForm";
 
@@ -10,8 +12,10 @@ function Goals({ session }) {
   const pageTitle = "goals";
   const nameInputTitle = "goal";
   const moneyInputTitle = "amount";
-  const savedMoneyInputTitle = "money saved";
+  const savedMoneyInputTitle = "Money saved";
   const savedMoneyTitle = "savedMoney";
+
+  const savedTotal = total(goals, savedMoneyTitle);
 
   return (
     <div className="rightSideContainer">
@@ -30,6 +34,8 @@ function Goals({ session }) {
         <>
           {goals && (
             <>
+              <ShowTotal title={"Savings"} total={savedTotal} />
+
               <div className="cardsGrid">
                 {goals?.map((goal) => {
                   const { goal: name, amount, id, savedMoney } = goal;

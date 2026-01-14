@@ -3,10 +3,15 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
-import { CreditCardIcon, CurrencyDollarIcon, GiftIcon, LockClosedIcon } from "@heroicons/react/24/solid";
+import { CreditCardIcon, CurrencyDollarIcon, GiftIcon, HomeIcon, LockClosedIcon } from "@heroicons/react/24/solid";
 import { Bars3Icon } from "@heroicons/react/24/outline"
+import { Session } from "next-auth";
 
-function MobileMenu({ session }) {
+type MobileMenuProps = {
+  session: Session
+}
+
+function MobileMenu({ session }: MobileMenuProps) {
   const router = useRouter();
 
   const { image, name } = session.user;
@@ -109,7 +114,7 @@ function MobileMenu({ session }) {
                   className={`mobileMenuLink ${
                     active && "mobileMenuLinkActive"
                   }`}
-                  onClick={signOut}
+                  onClick={() => signOut()}
                 >
                   <LockClosedIcon className="menuIcon" />
                   SIGNOUT

@@ -1,8 +1,15 @@
 import { deleteDoc, doc } from "firebase/firestore";
-import React from "react";
 import { db } from "../firebase";
+import { Session } from "next-auth";
 
-function UpdateDeleteButtons({ id, setSelected, session, pageTitle }) {
+type UpdateDeleteButtonsProps = {
+  id: string,
+  setSelected: (val: string | null) => void
+  session: Session
+  pageTitle: string
+}
+
+function UpdateDeleteButtons({ id, setSelected, session, pageTitle }: UpdateDeleteButtonsProps) {
   const deleteDocument = async (id) => {
     await deleteDoc(doc(db, "users", session.user.uid, pageTitle, id));
   };

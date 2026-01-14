@@ -1,3 +1,4 @@
+import { Session } from "next-auth";
 import useFetchData from "../../hooks/useFetchData";
 import total from "../../utils/total";
 import LoadingScreen from "../LoadingScreen";
@@ -5,7 +6,11 @@ import ShowTotal from "../ShowTotal";
 import GoalsCard from "./GoalsCard";
 import GoalsForm from "./GoalsForm";
 
-function Goals({ session }) {
+type GoalsProps = {
+  session: Session
+}
+
+function Goals({ session }: GoalsProps) {
   const { goals, loadingGoals } = useFetchData(session);
 
   const cardTitle = "Goal";

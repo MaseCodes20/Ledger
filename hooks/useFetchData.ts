@@ -1,16 +1,22 @@
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { collection, DocumentData, onSnapshot, query, QueryDocumentSnapshot, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
+import { Session } from "next-auth";
+import { Goal, Transaction } from "../types";
 
-function useFetchData(session) {
-  const [incomes, setIncomes] = useState([]);
-  const [bills, setBills] = useState([]);
-  const [goals, setGoals] = useState([]);
-  const [investments, setInvestments] = useState();
+function useFetchData(session: Session) {
+  const [incomes, setIncomes] = useState<Transaction[]>([]);
+  const [bills, setBills] = useState<Transaction[]>([]);
+  const [goals, setGoals] = useState<Goal[]>([]);
+  const [investments, setInvestments] = useState<Transaction[]>([]);
   const [loadingIncomes, setLoadingIncomes] = useState(true);
   const [loadingExpense, setLoadingExpense] = useState(true);
   const [loadingGoals, setLoadingGoals] = useState(true);
   const [loadingInvestments, setLoadingInvestments] = useState(true);
+
+  const mapFirestoreDoc = <T extends object>(doc: QueryDocumentSnapshot<DocumentData>): T => {
+  return { id: doc.id, ...doc.data() } as T;
+};
 
   useEffect(() => {
     let mounted = true;
@@ -23,7 +29,7 @@ function useFetchData(session) {
       (snapshot) => {
         if (mounted) {
           setIncomes(
-            snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+            snapshot.docs.map(mapFirestoreDoc<Transaction>)
           );
           setLoadingIncomes(false);
         }
@@ -37,7 +43,7 @@ function useFetchData(session) {
       ),
       (snapshot) => {
         if (mounted) {
-          setBills(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+          setBills(snapshot.docs.map(mapFirestoreDoc<Transaction>));
           setLoadingExpense(false);
         }
       }
@@ -50,7 +56,7 @@ function useFetchData(session) {
       ),
       (snapshot) => {
         if (mounted) {
-          setGoals(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+          setGoals(snapshot.docs.map(mapFirestoreDoc<Goal>));
           setLoadingGoals(false);
         }
       }
@@ -64,7 +70,7 @@ function useFetchData(session) {
       (snapshot) => {
         if (mounted) {
           setInvestments(
-            snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+            snapshot.docs.map(mapFirestoreDoc<Transaction>)
           );
           setLoadingInvestments(false);
         }

@@ -31,7 +31,7 @@ function SideBar() {
                 <h1 className="text-sm font-semibold w-[60px] truncate">
                   {name}
                 </h1>
-                <button onClick={signOut} className="text-sm">
+                <button onClick={() => signOut()} className="text-sm">
                   Sign out
                 </button>
               </div>

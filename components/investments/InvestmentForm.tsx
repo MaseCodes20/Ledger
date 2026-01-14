@@ -1,12 +1,17 @@
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useRef } from "react";
 import { db } from "../../firebase";
+import { Session } from "next-auth";
 
-function InvestmentForm({ session }) {
-  const companyRef = useRef();
-  const investedRef = useRef();
-  const sharesRef = useRef();
-  const dividendRef = useRef();
+type InvestmentFormProps = {
+  session: Session
+}
+
+function InvestmentForm({ session }: InvestmentFormProps) {
+  const companyRef = useRef<HTMLInputElement>(null);
+  const investedRef = useRef<HTMLInputElement>(null);
+  const sharesRef = useRef<HTMLInputElement>(null);
+  const dividendRef = useRef<HTMLInputElement>(null);
 
   const submitInvestment = async (e) => {
     e.preventDefault();

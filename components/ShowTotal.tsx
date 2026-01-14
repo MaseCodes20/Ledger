@@ -1,6 +1,9 @@
-import React from "react";
+type ShowTotalProps = {
+  title: string
+  total: number
+}
 
-function ShowTotal({ title, total }) {
+function ShowTotal({ title, total }: ShowTotalProps) {
   return (
     <div className="w-fit mx-auto mt-6 border-2 border-[#8985F2] rounded-md p-4 bg-[#231B40] font-bold">
       <div className="flex">

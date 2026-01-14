@@ -1,10 +1,14 @@
-import React from "react";
+import { Session } from "next-auth";
 import Footer from "../Footer";
 import MobileMenu from "../MobileMenu";
 import SideBar from "../SideBar";
 import Data from "./Data";
 
-function Ledger({ session }) {
+type LedgerProps = {
+  session: Session
+}
+
+function Ledger({ session }: LedgerProps) {
   return (
     <div className="screenContainer">
       <MobileMenu session={session} />

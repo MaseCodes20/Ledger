@@ -1,25 +1,17 @@
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Bar } from "react-chartjs-2";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js"
+import { Bar } from "react-chartjs-2"
 
 // Register only what you need (better for performance)
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
-function BarChart({ money, name, label, color }) {
+type BarChartProps = { 
+  money: number []
+  name: string[]
+  label: string 
+  color: string
+}
+
+function BarChart({ money, name, label, color }: BarChartProps) {
   const data = {
     labels: [...name],
     datasets: [
@@ -31,7 +23,7 @@ function BarChart({ money, name, label, color }) {
         borderWidth: 1,
       },
     ],
-  };
+  }
 
   const options = {
     plugins: {
@@ -50,7 +42,7 @@ function BarChart({ money, name, label, color }) {
         ticks: {
           // Include a dollar sign in the ticks
           callback: function (value) {
-            return `$${value}`;
+            return `$${value}`
           },
           color: "white",
         },
@@ -61,16 +53,16 @@ function BarChart({ money, name, label, color }) {
         },
       },
     },
-  };
+  }
   return (
     <>
       {money.length > 0 && (
         <div className="lg:w-[500px] mx-auto mt-10">
-          <Bar type="bar" data={data} options={options} />
+          <Bar data={data} options={options} />
         </div>
       )}
     </>
-  );
+  )
 }
 
-export default BarChart;
+export default BarChart

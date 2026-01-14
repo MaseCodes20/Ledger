@@ -3,8 +3,8 @@ import Form from "../Form";
 import useFetchData from "../../hooks/useFetchData";
 import LoadingScreen from "../LoadingScreen";
 import ShowTotal from "../ShowTotal";
-import total from "../../utils/total";
 import { Session } from "next-auth";
+import { total } from "../../utils";
 
 type IncomeProps = {
   session: Session
@@ -19,7 +19,7 @@ function Income({ session }: IncomeProps) {
   const moneyInputTitle = "income";
 
   const incomeTotal = total(incomes, moneyInputTitle);
-  
+
   return (
     <div className="rightSideContainer">
       <Form

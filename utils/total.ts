@@ -1,4 +1,4 @@
-const total = <T extends Record<string, any>>(
+export const total = <T extends Record<string, any>>(
   array: T[] | undefined, 
   money: keyof T | string
 ): number => {
@@ -11,5 +11,3 @@ const total = <T extends Record<string, any>>(
     })
     .reduce((a, c) => a + c, 0);
 };
-
-export default total;

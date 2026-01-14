@@ -1,10 +1,10 @@
 import { Session } from "next-auth";
 import useFetchData from "../../hooks/useFetchData";
-import total from "../../utils/total";
 import LoadingScreen from "../LoadingScreen";
 import ShowTotal from "../ShowTotal";
 import GoalsCard from "./GoalsCard";
 import GoalsForm from "./GoalsForm";
+import { total } from "../../utils";
 
 type GoalsProps = {
   session: Session

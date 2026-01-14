@@ -1,10 +1,9 @@
 import { doc, serverTimestamp, updateDoc } from "firebase/firestore"
 import { useState, useRef } from "react"
 import { db } from "../../firebase"
-import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter"
-import dividendTotal from "../../utils/dividendTotal"
 import UpdateDeleteButtons from "../UpdateDeleteButtons"
 import { Session } from "next-auth"
+import { capitalizeFirstLetter, dividendTotal } from "../../utils"
 
 type InvestmentCardProps = {
   id: string

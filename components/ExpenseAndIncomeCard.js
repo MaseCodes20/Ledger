@@ -2,7 +2,7 @@ import { doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useState, useRef } from "react";
 import { db } from "../firebase";
 import UpdateDeleteButtons from "./UpdateDeleteButtons";
-import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
+import { capitalizeFirstLetter } from "../utils";
 
 function ExpenseAndIncomeCard({
   id,

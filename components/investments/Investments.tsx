@@ -1,6 +1,5 @@
-import React from "react";
 import useFetchData from "../../hooks/useFetchData";
-import total from "../../utils/total";
+import { total } from "../../utils";
 import LoadingScreen from "../LoadingScreen";
 import ShowTotal from "../ShowTotal";
 import InvestmentCard from "./InvestmentCard";

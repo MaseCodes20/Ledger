@@ -1,21 +1,25 @@
-import DoughnutChart from "../DoughnutChart";
-import BarChart from "../BarChart";
 import GoalsCharts from "./GoalsCharts";
 import WelcomeUser from "./WelcomeUser";
 import useFetchData from "../../hooks/useFetchData";
+import { BarChart, DoughnutChart } from "../charts";
+import { Session } from "next-auth";
+import { sum } from "../../utils";
 
-function Data({ session }) {
+type DataProps = {
+  session: Session
+}
+
+function Data({ session }: DataProps) {
   const { incomes, bills, goals, loadingIncomes } = useFetchData(session);
-
-  const sum = (income) => {
-    return income.reduce((a, b) => a + b, 0);
-  };
 
   const getIncome = incomes.map((incomes) => incomes.income);
   const getJobs = incomes.map((name) => name.job);
   const getBills = bills.map((bill) => bill.fee);
   const getCompany = bills.map((name) => name.expense);
 
+  console.log({
+    getCompany
+  })
   const incomeTotal = sum(getIncome);
   const billTotal = sum(getBills);
 

@@ -12,7 +12,13 @@ import { Pie } from "react-chartjs-2";
 // 3. Register elements
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function GoalsChart({ name, amount, savedMoney }) {
+type GoalsChartProps = {
+  name: string
+  amount: number
+  savedMoney: number
+}
+
+function GoalsChart({ name, amount, savedMoney }: GoalsChartProps) {
   const remaining = amount - savedMoney;
 
   const data = {

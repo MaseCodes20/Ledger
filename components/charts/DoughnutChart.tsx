@@ -10,7 +10,13 @@ import { Doughnut } from "react-chartjs-2";
 // Specifically register the elements needed for a Doughnut chart
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function DoughnutChart({ billTotal, Remaining, incomeTotal }) {
+type DoughnutChartProps = { 
+  billTotal: number 
+  Remaining: number 
+  incomeTotal: number 
+}
+
+function DoughnutChart({ billTotal, Remaining, incomeTotal }: DoughnutChartProps) {
   const data = {
     labels: ["Expense", "Remaining"],
     datasets: [
@@ -49,7 +55,7 @@ function DoughnutChart({ billTotal, Remaining, incomeTotal }) {
             <div className="hidden lg:flex">
               <h1 className="mx-auto hidden lg:flex">Income</h1>
             </div>
-            <p className="text-sm lg:text-2xl mt-5 lg:mt-0">
+            <p className="text-sm mt-5 lg:mt-0">
               ${incomeTotal.toLocaleString()}
             </p>
           </div>

@@ -49,7 +49,7 @@
     @apply bg-red-500 hover:bg-red-700;
   }
   .totalIncomeContainer {
-    @apply lg:text-black text-center font-bold centeredOnScreen mt-4;
+    @apply lg:text-black text-center font-bold centeredOnScreen mt-4 flex items-center justify-center;
   }
   .totalIncomeCircle {
     @apply relative lg:h-[100px] lg:w-[100px] rounded-full bg-[#36a2eb];

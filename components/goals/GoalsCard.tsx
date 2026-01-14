@@ -1,9 +1,9 @@
 import { doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useState, useRef } from "react";
 import { db } from "../../firebase";
-import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
 import UpdateDeleteButtons from "../UpdateDeleteButtons";
 import { Session } from "next-auth";
+import { capitalizeFirstLetter } from "../../utils";
 
 type GoalsCardProps = {
   id: string

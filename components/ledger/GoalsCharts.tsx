@@ -1,7 +1,11 @@
-import React from "react";
-import GoalsChart from "./GoalsChart";
+import { Goal } from "../../types";
+import { GoalsChart } from "../charts";
 
-function GoalsCharts({ goals }) {
+type GoalsChartsProps = {
+  goals: Goal[]
+}
+
+function GoalsCharts({ goals }: GoalsChartsProps) {
   return (
     <div className="text-center mt-10 pt-10 border-t-2 border-[#8985F2]">
       <h1 className="text-2xl text-[#F26BDC] mb-5">Goals Chart</h1>

@@ -1,7 +1,13 @@
-import React from "react";
 import { ChevronDoubleDownIcon } from "@heroicons/react/24/solid";
+import { Session } from "next-auth";
+import { Goal } from "../../types";
 
-function WelcomeUser({ session, goals }) {
+type WelcomeUserProps = { 
+  session: Session
+  goals: Goal[]
+}
+
+function WelcomeUser({ session, goals }: WelcomeUserProps) {
   return (
     <div className="h-screen text-center">
       <div className="welcomeUserCenteredSmallScreens lg:centeredOnScreen">

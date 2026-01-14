@@ -1,6 +1,16 @@
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useRef } from "react";
 import { db } from "../../firebase";
+import { Session } from "next-auth";
+
+type GoalsFormProps = {
+  session: Session
+  nameInputTitle: string
+  moneyInputTitle: string
+  pageTitle: string
+  savedMoneyInputTitle: string
+  savedMoneyTitle: string
+}
 
 function GoalsForm({
   session,
@@ -9,10 +19,10 @@ function GoalsForm({
   pageTitle,
   savedMoneyInputTitle,
   savedMoneyTitle,
-}) {
-  const nameInputRef = useRef();
-  const moneyInputRef = useRef();
-  const savedMoneyInputRef = useRef();
+}: GoalsFormProps) {
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const moneyInputRef = useRef<HTMLInputElement>(null);
+  const savedMoneyInputRef = useRef<HTMLInputElement>(null);
 
   const submitToDB = async (e) => {
     e.preventDefault();

@@ -3,6 +3,21 @@ import { useState, useRef } from "react";
 import { db } from "../../firebase";
 import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
 import UpdateDeleteButtons from "../UpdateDeleteButtons";
+import { Session } from "next-auth";
+
+type GoalsCardProps = {
+  id: string
+  session: Session
+  money: number
+  saved: number
+  name: string
+  pageTitle: string
+  nameInputTitle: string
+  moneyInputTitle: string
+  savedMoneyInputTitle: string
+  savedMoneyTitle: string
+  cardTitle: string
+}
 
 function GoalsCard({
   id,
@@ -16,12 +31,12 @@ function GoalsCard({
   savedMoneyInputTitle,
   savedMoneyTitle,
   cardTitle,
-}) {
-  const [selected, setSelected] = useState(null);
+}: GoalsCardProps) {
+  const [selected, setSelected] = useState<string | null>(null);
 
-  const nameInputRef = useRef();
-  const moneyInputRef = useRef();
-  const savedMoneyInputRef = useRef();
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const moneyInputRef = useRef<HTMLInputElement>(null);
+  const savedMoneyInputRef = useRef<HTMLInputElement>(null);
 
   const updateDocument = async (e, id) => {
     e.preventDefault();

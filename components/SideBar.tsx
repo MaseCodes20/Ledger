@@ -14,7 +14,7 @@ function SideBar() {
     <div className="hidden lg:flex">
       <div className="relative w-[300px] h-screen bg-[#151426] text-white border-r-2 border-[#8985F2]">
         <div className="flex justify-between items-center p-4 border-b-2 border-[#8985F2]">
-          <div className="text-center">
+          <div className="text-left">
             <h1 className="text-2xl font-bold">LedgerMe</h1>
             <p className="text-sm">Expense Tracker</p>
           </div>

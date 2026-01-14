@@ -5,10 +5,10 @@ import Ledger from "../components/ledger/Ledger"
 import LoadingScreen from "../components/LoadingScreen"
 import WelcomeScreen from "../components/WelcomeScreen"
 import useFetchSession from "../hooks/useFetchSession"
-import { LOGGED_IN } from "../utils"
+import { LOGGED_OUT } from "../utils"
 
 export default function Home() {
-  const { session, status } = useFetchSession({ options: LOGGED_IN })
+  const { session, status } = useFetchSession({ options: LOGGED_OUT })
 
   return (
     <div className="pageContainer">

@@ -4,6 +4,7 @@ import useFetchData from "../../hooks/useFetchData";
 import { BarChart, DoughnutChart } from "../charts";
 import { Session } from "next-auth";
 import { sum } from "../../utils";
+import LoadingScreen from "../LoadingScreen";
 
 type DataProps = {
   session: Session
@@ -32,7 +33,9 @@ function Data({ session }: DataProps) {
 
   return (
     <div className="rightSideContainer">
-      {!loadingIncomes && (
+      {loadingIncomes ? (
+        <LoadingScreen />
+      ): (
         <>
           {incomeTotal > 0 ? (
             <div className="lg:flex items-center w-full">

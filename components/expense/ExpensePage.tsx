@@ -1,5 +1,4 @@
 import Head from "next/head";
-import React from "react";
 import useFetchSession from "../../hooks/useFetchSession";
 import Footer from "../Footer";
 import LoadingScreen from "../LoadingScreen";

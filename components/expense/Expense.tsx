@@ -1,3 +1,4 @@
+import { Session } from "next-auth";
 import useFetchData from "../../hooks/useFetchData";
 import total from "../../utils/total";
 import ExpenseAndIncomeCard from "../ExpenseAndIncomeCard";
@@ -5,7 +6,11 @@ import Form from "../Form";
 import LoadingScreen from "../LoadingScreen";
 import ShowTotal from "../ShowTotal";
 
-function Expense({ session }) {
+type ExpenseProps = {
+  session: Session
+}
+
+function Expense({ session }: ExpenseProps) {
   const { bills, loadingExpense } = useFetchData(session);
 
   const cardTitle = "Bill";

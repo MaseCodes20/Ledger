@@ -1,0 +1,68 @@
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js"
+import { Bar } from "react-chartjs-2"
+
+// Register only what you need (better for performance)
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+
+type BarChartProps = { 
+  money: number []
+  name: string[]
+  label: string 
+  color: string
+}
+
+function BarChart({ money, name, label, color }: BarChartProps) {
+  const data = {
+    labels: [...name],
+    datasets: [
+      {
+        label: label,
+        data: [...money],
+        backgroundColor: [color],
+        borderColor: [color],
+        borderWidth: 1,
+      },
+    ],
+  }
+
+  const options = {
+    plugins: {
+      legend: {
+        labels: {
+          // This more specific font property overrides the global property
+          color: "white",
+          font: {
+            size: 14,
+          },
+        },
+      },
+    },
+    scales: {
+      y: {
+        ticks: {
+          // Include a dollar sign in the ticks
+          callback: function (value) {
+            return `$${value}`
+          },
+          color: "white",
+        },
+      },
+      x: {
+        ticks: {
+          color: "white",
+        },
+      },
+    },
+  }
+  return (
+    <>
+      {money.length > 0 && (
+        <div className="lg:w-[500px] mx-auto mt-10">
+          <Bar data={data} options={options} />
+        </div>
+      )}
+    </>
+  )
+}
+
+export default BarChart

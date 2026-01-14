@@ -1,0 +1,70 @@
+import GoalsCharts from "./GoalsCharts";
+import WelcomeUser from "./WelcomeUser";
+import useFetchData from "../../hooks/useFetchData";
+import { BarChart, DoughnutChart } from "../charts";
+import { Session } from "next-auth";
+import { sum } from "../../utils";
+
+type DataProps = {
+  session: Session
+}
+
+function Data({ session }: DataProps) {
+  const { incomes, bills, goals, loadingIncomes } = useFetchData(session);
+
+  const getIncome = incomes.map((incomes) => incomes.income);
+  const getJobs = incomes.map((name) => name.job);
+  const getBills = bills.map((bill) => bill.fee);
+  const getCompany = bills.map((name) => name.expense);
+
+  console.log({
+    getCompany
+  })
+  const incomeTotal = sum(getIncome);
+  const billTotal = sum(getBills);
+
+  const Remaining = incomeTotal - billTotal;
+
+  const billsLabel = "Bills";
+  const billsColor = "rgba(255, 99, 132, 0.6)";
+  const incomeLabel = "Income";
+  const incomeColor = "rgba(34, 197, 94, .6)";
+
+  return (
+    <div className="rightSideContainer">
+      {!loadingIncomes && (
+        <>
+          {incomeTotal > 0 ? (
+            <div className="lg:flex items-center w-full">
+              <DoughnutChart
+                billTotal={billTotal}
+                Remaining={Remaining}
+                incomeTotal={incomeTotal}
+              />
+              <div className="mt-10 mx-auto">
+                <BarChart
+                  money={getBills}
+                  name={getCompany}
+                  label={billsLabel}
+                  color={billsColor}
+                />
+                <BarChart
+                  money={getIncome}
+                  name={getJobs}
+                  label={incomeLabel}
+                  color={incomeColor}
+                />
+              </div>
+            </div>
+          ) : (
+            <WelcomeUser session={session} goals={goals} />
+          )}
+
+          {goals.length > 0 && <GoalsCharts goals={goals} />}
+        </>
+      )}
+    </div>
+  );
+}
+
+export default Data;

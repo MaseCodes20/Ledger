@@ -3,6 +3,18 @@ import { useState, useRef } from "react";
 import { db } from "../firebase";
 import UpdateDeleteButtons from "./UpdateDeleteButtons";
 import { capitalizeFirstLetter } from "../utils";
+import { Session } from "next-auth";
+
+type ExpenseAndIncomeCardProps = {
+  id: string
+  session: Session
+  money: string
+  name: string
+  pageTitle: string
+  nameInputTitle: string
+  moneyInputTitle: string
+  cardTitle: string
+}
 
 function ExpenseAndIncomeCard({
   id,
@@ -13,11 +25,11 @@ function ExpenseAndIncomeCard({
   nameInputTitle,
   moneyInputTitle,
   cardTitle,
-}) {
+}: ExpenseAndIncomeCardProps) {
   const [selected, setSelected] = useState(null);
 
-  const nameInputRef = useRef();
-  const moneyInputRef = useRef();
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const moneyInputRef = useRef<HTMLInputElement>(null);
 
   const updateDocument = async (e, id) => {
     e.preventDefault();

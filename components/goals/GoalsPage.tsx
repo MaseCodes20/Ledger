@@ -6,10 +6,10 @@ import LoadingScreen from "../LoadingScreen";
 import MobileMenu from "../MobileMenu";
 import SideBar from "../SideBar";
 import Goals from "./Goals";
+import { LOGGED_IN } from "../../utils";
 
 function GoalsPage() {
-  const loggedIn = { required: true };
-  const { session, status } = useFetchSession(loggedIn);
+  const { session, status } = useFetchSession({ options: LOGGED_IN });
 
   return (
     <>

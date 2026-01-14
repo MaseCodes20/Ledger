@@ -5,10 +5,10 @@ import LoadingScreen from "../LoadingScreen";
 import MobileMenu from "../MobileMenu";
 import SideBar from "../SideBar";
 import Income from "./Income";
+import { LOGGED_IN } from "../../utils";
 
 function IncomePage() {
-  const loggedIn = { required: true };
-  const { session, status } = useFetchSession(loggedIn);
+  const { session, status } = useFetchSession({ options: LOGGED_IN });
 
   return (
     <>

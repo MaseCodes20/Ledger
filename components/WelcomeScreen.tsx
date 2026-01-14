@@ -2,7 +2,7 @@
 
 import { signIn } from "next-auth/react";
 import Image from "next/image";
-import Footer from "../components/Footer";
+import Footer from "./Footer";
 
 function WelcomeScreen() {
   return (
@@ -12,7 +12,7 @@ function WelcomeScreen() {
           Welcome To LedgerMe
         </h1>
         <button
-          onClick={signIn}
+          onClick={() => signIn()}
           className="mt-4 ml-3 bg-[#8985F2] text-[#151426] font-bold rounded-full p-3 hover:bg-[#151426] hover:text-white"
           aria-label="Sign in button"
         >

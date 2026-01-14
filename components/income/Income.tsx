@@ -4,8 +4,13 @@ import useFetchData from "../../hooks/useFetchData";
 import LoadingScreen from "../LoadingScreen";
 import ShowTotal from "../ShowTotal";
 import total from "../../utils/total";
+import { Session } from "next-auth";
 
-function Income({ session }) {
+type IncomeProps = {
+  session: Session
+}
+
+function Income({ session }: IncomeProps) {
   const { incomes, loadingIncomes } = useFetchData(session);
 
   const cardTitle = "Income";
@@ -14,6 +19,7 @@ function Income({ session }) {
   const moneyInputTitle = "income";
 
   const incomeTotal = total(incomes, moneyInputTitle);
+  
   return (
     <div className="rightSideContainer">
       <Form

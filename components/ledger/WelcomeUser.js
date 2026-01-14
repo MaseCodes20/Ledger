@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronDoubleDownIcon } from "@heroicons/react/solid";
+import { ChevronDoubleDownIcon } from "@heroicons/react/24/solid";
 
 function WelcomeUser({ session, goals }) {
   return (

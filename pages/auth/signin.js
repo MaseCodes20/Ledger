@@ -1,3 +1,5 @@
+"use client"
+
 import { getProviders, signIn } from "next-auth/react";
 import Head from "next/head";
 

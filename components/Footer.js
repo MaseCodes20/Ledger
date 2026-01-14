@@ -1,6 +1,5 @@
-import React from "react";
-import { MailIcon } from "@heroicons/react/solid";
 import Image from "next/image";
+import { EnvelopeIcon } from "@heroicons/react/24/solid";
 
 function Footer() {
   return (
@@ -73,7 +72,7 @@ function Footer() {
           className="ml-1"
           aria-label="Send mail link"
         >
-          <MailIcon className="h-8 text-white" />
+          <EnvelopeIcon className="h-8 text-white" />
         </a>
       </div>
     </div>

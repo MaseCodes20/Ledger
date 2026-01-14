@@ -1,14 +1,10 @@
-import { Menu } from "@headlessui/react";
+"use client"
+
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { useRouter } from "next/router";
-import {
-  CashIcon,
-  CreditCardIcon,
-  GiftIcon,
-  HomeIcon,
-  LogoutIcon,
-  MenuIcon,
-} from "@heroicons/react/solid";
 import { signOut } from "next-auth/react";
+import { CreditCardIcon, CurrencyDollarIcon, GiftIcon, LockClosedIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon } from "@heroicons/react/24/outline"
 
 function MobileMenu({ session }) {
   const router = useRouter();
@@ -32,17 +28,17 @@ function MobileMenu({ session }) {
         </div>
       </div>
       <Menu as="div" className="mr-4">
-        <Menu.Button
+        <MenuButton
           className="menuButton"
           name="menu button"
           aria-label="menu button"
         >
-          <MenuIcon className="h-7 lg:hidden hover:text-pink-500" />
-        </Menu.Button>
+          <Bars3Icon className="h-7 lg:hidden hover:text-pink-500" />
+        </MenuButton>
 
-        <Menu.Items className="menuItemsContainer">
+        <MenuItems className="menuItemsContainer">
           <div className="rounded-md">
-            <Menu.Item>
+            <MenuItem>
               {({ active }) => (
                 <a
                   className={`mobileMenuLink menuItemsBorder ${
@@ -54,8 +50,8 @@ function MobileMenu({ session }) {
                   HOME
                 </a>
               )}
-            </Menu.Item>
-            <Menu.Item>
+            </MenuItem>
+            <MenuItem>
               {({ active }) => (
                 <a
                   className={`mobileMenuLink menuItemsBorder ${
@@ -63,12 +59,12 @@ function MobileMenu({ session }) {
                   }`}
                   onClick={() => router.push("/income")}
                 >
-                  <CashIcon className="menuIcon" />
+                  <CurrencyDollarIcon className="menuIcon" />
                   INCOME
                 </a>
               )}
-            </Menu.Item>
-            <Menu.Item>
+            </MenuItem>
+            <MenuItem>
               {({ active }) => (
                 <a
                   className={`mobileMenuLink menuItemsBorder ${
@@ -80,8 +76,8 @@ function MobileMenu({ session }) {
                   EXPENSE
                 </a>
               )}
-            </Menu.Item>
-            <Menu.Item>
+            </MenuItem>
+            <MenuItem>
               {({ active }) => (
                 <a
                   className={`mobileMenuLink menuItemsBorder ${
@@ -93,8 +89,8 @@ function MobileMenu({ session }) {
                   INVESTMENTS
                 </a>
               )}
-            </Menu.Item>
-            <Menu.Item>
+            </MenuItem>
+            <MenuItem>
               {({ active }) => (
                 <a
                   className={`mobileMenuLink menuItemsBorder ${
@@ -106,8 +102,8 @@ function MobileMenu({ session }) {
                   GOALS
                 </a>
               )}
-            </Menu.Item>
-            <Menu.Item>
+            </MenuItem>
+            <MenuItem>
               {({ active }) => (
                 <a
                   className={`mobileMenuLink ${
@@ -115,13 +111,13 @@ function MobileMenu({ session }) {
                   }`}
                   onClick={signOut}
                 >
-                  <LogoutIcon className="menuIcon" />
+                  <LockClosedIcon className="menuIcon" />
                   SIGNOUT
                 </a>
               )}
-            </Menu.Item>
+            </MenuItem>
           </div>
-        </Menu.Items>
+        </MenuItems>
       </Menu>
     </div>
   );

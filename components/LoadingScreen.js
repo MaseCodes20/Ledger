@@ -1,10 +1,9 @@
-import React from "react";
-import { StatusOnlineIcon } from "@heroicons/react/outline";
+import { GlobeAltIcon } from "@heroicons/react/24/solid";
 
 function LoadingScreen() {
   return (
     <div className="centeredOnScreen">
-      <StatusOnlineIcon className="animate-spin h-20" />
+      <GlobeAltIcon className="animate-spin h-20" />
     </div>
   );
 }

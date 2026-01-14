@@ -1,6 +1,23 @@
-import React from "react";
-import "chart.js/auto";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 import { Bar } from "react-chartjs-2";
+
+// Register only what you need (better for performance)
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 function BarChart({ money, name, label, color }) {
   const data = {

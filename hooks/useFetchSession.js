@@ -1,3 +1,5 @@
+"use client"
+
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";

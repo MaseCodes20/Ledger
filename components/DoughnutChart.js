@@ -1,6 +1,14 @@
 import React from "react";
-import "chart.js/auto";
-import { Chart } from "react-chartjs-2";
+import { 
+  Chart as ChartJS, 
+  ArcElement, 
+  Tooltip, 
+  Legend 
+} from 'chart.js';
+import { Doughnut } from "react-chartjs-2";
+
+// Specifically register the elements needed for a Doughnut chart
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 function DoughnutChart({ billTotal, Remaining, incomeTotal }) {
   const data = {
@@ -29,9 +37,12 @@ function DoughnutChart({ billTotal, Remaining, incomeTotal }) {
       },
     },
   };
+
   return (
     <div className="lg:w-[500px] h-fit mx-auto mt-10 relative">
-      <Chart type="doughnut" data={data} options={options} />
+      {/* Change <Chart type="doughnut" /> to <Doughnut /> */}
+      <Doughnut data={data} options={options} />
+      
       <div className="totalIncomeContainer">
         <div className="totalIncomeCircle">
           <div className="centeredOnScreen">

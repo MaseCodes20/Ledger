@@ -1,6 +1,16 @@
 import React from "react";
-import "chart.js/auto";
-import { Chart } from "react-chartjs-2";
+// 1. Remove "chart.js/auto"
+// 2. Import specific Pie components
+import { 
+  Chart as ChartJS, 
+  ArcElement, 
+  Tooltip, 
+  Legend 
+} from 'chart.js';
+import { Pie } from "react-chartjs-2";
+
+// 3. Register elements
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 function GoalsChart({ name, amount, savedMoney }) {
   const remaining = amount - savedMoney;
@@ -22,20 +32,19 @@ function GoalsChart({ name, amount, savedMoney }) {
     plugins: {
       legend: {
         labels: {
-          // This more specific font property overrides the global property
           color: "white",
-          font: {
-            size: 14,
-          },
+          font: { size: 14 },
         },
       },
     },
   };
+
   return (
     <div className="lg:w-[300px] border-2 rounded-lg p-2 border-[#8985F2]">
-      <Chart type="pie" data={data} options={options} />
+      {/* 4. Use <Pie /> instead of <Chart type="pie" /> */}
+      <Pie data={data} options={options} />
 
-      <h1 className="">{name}</h1>
+      <h1 className="text-center mt-2">{name}</h1>
     </div>
   );
 }

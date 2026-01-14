@@ -1,9 +1,14 @@
 "use client"
 
-import { getProviders, signIn } from "next-auth/react";
+import { BuiltInProviderType } from "next-auth/providers";
+import { ClientSafeProvider, getProviders, LiteralUnion, signIn } from "next-auth/react";
 import Head from "next/head";
 
-export default function SignIn({ providers }) {
+type SignInProps = {
+  providers: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider>
+}
+
+export default function SignIn({ providers }: SignInProps) {
   return (
     <div className="pageContainer">
       <Head>
